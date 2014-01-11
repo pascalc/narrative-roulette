@@ -17,6 +17,8 @@ class Round(Base):
   start_time = Column(DateTime, default=datetime.now)
   end_time = Column(DateTime, nullable=False)
   duration_secs = Column(Integer, nullable=False)
+  submissions = orm.relationship('Submission', backref='round',
+                                lazy='dynamic')
 
 class Perspective(Base):
   __tablename__ = 'perspective'
@@ -24,6 +26,8 @@ class Perspective(Base):
   gender = Column(String(6), nullable=False)
   text = Column(Text, nullable=False)
   created_at = Column(DateTime, default=datetime.now)
+  submissions = orm.relationship('Submission', backref='perspective',
+                                lazy='dynamic')
 
 class Submission(Base):
   __tablename__ = 'submission'
