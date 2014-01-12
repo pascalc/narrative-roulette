@@ -1,13 +1,12 @@
-import flask
-import flask.ext.sqlalchemy
 import flask.ext.restless
 
 import db
 import db.schema as schema
 import db.query as query
 
+from handlers import app
+
 # Create the Flask application and the Flask-SQLAlchemy object.
-app = flask.Flask(__name__)
 app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = db.connection_string
 
