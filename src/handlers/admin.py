@@ -10,8 +10,8 @@ admin = Admin(app, url="/api/admin")
 class RoundModelView(ModelView):
   form_columns = \
     ('start_time', 
-      'end_time',
-      'duration_secs')
+     'end_time',
+     'duration_secs')
 
   def __init__(self, name=None, category=None, endpoint=None, url=None, **kwargs):
     for k, v in kwargs.iteritems():
