@@ -1,10 +1,11 @@
-from handlers import app
-from flask_sockets import Sockets
+from tornado.websocket import WebSocketHandler
 
-sockets = Sockets(app)
+class WSHandler(WebSocketHandler):
+  def open(self):
+    print "WebSocket opened"
 
-@sockets.route('/echo')
-def echo_socket(ws):
-    while True:
-        message = ws.receive()
-        ws.send(message)
+  def on_message(self, message):
+    self.write_message(u"You said: " + message)
+
+  def on_close(self):
+    print "WebSocket closed"
