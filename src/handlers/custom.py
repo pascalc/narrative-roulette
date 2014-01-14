@@ -1,5 +1,5 @@
 from handlers import app
 
-@app.route('/hello')
+@app.route('/')
 def index():
-  return 'Yo, dawg'
+  return app.send_static_file('index.html')
