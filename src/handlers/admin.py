@@ -5,7 +5,7 @@ import db.schema as schema
 import db.query as query
 from handlers.rest import app
 
-admin = Admin(app, url="/api/admin")
+admin = Admin(app, url="/admin")
 
 class RoundModelView(ModelView):
   form_columns = \
