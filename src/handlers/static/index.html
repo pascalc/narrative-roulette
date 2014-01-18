@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="NarrativeRoulette">
   <head>
     <title>Narrative Roulette</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -17,20 +17,20 @@
     <div class="container">
       <header>
         <h1>Narrative Roulette</h1>
-        <h2>Write</h2>
       </header>
-      <p class="perspective">You are male. You are bullying someone in your class.</p>
-      <textarea name="text" id="submission" cols="30" rows="10"></textarea>
-      <div class="buttons">
-        <p>All submissions are anonymous.</p>
-        <button class="btn btn-large">Another perspective</button>
-        <button class="btn btn-large btn-success">Publish</button>
-      </div>
+      <div ng-view></div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="js/lib/jquery.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="js/bootstrap.js"></script>
+    <script src="js/lib/bootstrap.js"></script>
+    <!-- Angular -->
+    <script src="js/lib/angular.js"></script>
+    <script src="js/lib/angular-route.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/WriteCtrl.js"></script>
+    <script src="js/DisplayCtrl.js"></script>
+    <script src="js/SubmissionCtrl.js"></script>
   </body>
 </html>
