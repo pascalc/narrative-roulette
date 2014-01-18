@@ -17,8 +17,6 @@ class Round(Base):
   start_time = Column(DateTime, default=datetime.now)
   end_time = Column(DateTime, nullable=False)
   duration_secs = Column(Integer, nullable=False)
-  submissions = orm.relationship('Submission', backref='round',
-                                lazy='dynamic')
 
 class Perspective(Base):
   __tablename__ = 'perspective'
@@ -33,7 +31,6 @@ class Submission(Base):
   __tablename__ = 'submission'
   id = Column(Integer, primary_key=True)
   perspective_id = Column(Integer, ForeignKey('perspective.id'), nullable=False)
-  round_id = Column(Integer, ForeignKey('round.id'), nullable=False)
   text = Column(Text, nullable=False)
   likes = Column(Integer, default=0)
 
