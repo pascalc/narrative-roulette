@@ -1,8 +1,9 @@
 <h2>Write</h2>
-<p class="perspective">You are male. You are bullying someone in your class.</p>
+<p class="perspective-gender">You are {{perspective.gender}}.</p> 
+<p class="perspective-text">{{perspective.text}}</p>
 <textarea name="text" id="submission" cols="30" rows="10"></textarea>
 <div class="buttons">
   <p>All submissions are anonymous.</p>
-  <button class="btn btn-large">Another perspective</button>
+  <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button>
   <button class="btn btn-large btn-success">Publish</button>
 </div>
