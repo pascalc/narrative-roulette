@@ -9,6 +9,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/write.html',
         controller: 'WriteCtrl'
       }).
+      when('/write/:perspectiveId', {
+        templateUrl: 'partials/write.html',
+        controller: 'WriteCtrl'
+      }).
       when('/display', {
         templateUrl: 'partials/display.html',
         controller: 'DisplayCtrl'
@@ -18,6 +22,14 @@ app.config(['$routeProvider',
         controller: 'SubmissionCtrl'
       }).
       when('/round/:roundId', {
+        templateUrl: 'partials/submission.html',
+        controller: 'SubmissionCtrl'
+      }).
+      // when('/rounds', {
+      //   templateUrl: 'partials/rounds.html',
+      //   controller: 'RoundsCtrl'
+      // }).
+      when('/submission/:submissionId', {
         templateUrl: 'partials/submission.html',
         controller: 'SubmissionCtrl'
       }).
