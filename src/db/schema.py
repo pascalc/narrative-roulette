@@ -47,12 +47,15 @@ class Submission(Base, MyMixin):
   # Round = latest round before created_at with correct perspective_id
   @hybrid_property
   def round_id(self):
-    return session.query(Round)\
-      .filter(Round.start_time < self.created_at)\
-      .filter(Round.perspective_id == self.perspective_id)\
-      .order_by(desc(Round.start_time))\
-      .first()\
-      .id
+    try:
+      return session.query(Round)\
+        .filter(Round.start_time < self.created_at)\
+        .filter(Round.perspective_id == self.perspective_id)\
+        .order_by(desc(Round.start_time))\
+        .first()\
+        .id
+    except AttributeError:
+      return None
 
   def __repr__(self):
     return "Submission %s" % self.id
