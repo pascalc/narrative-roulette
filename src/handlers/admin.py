@@ -8,6 +8,7 @@ from handlers.rest import app
 admin = Admin(app, url="/admin")
 
 class RoundModelView(ModelView):
+  column_list = ('id', 'perspective', 'start_time')
   def __init__(self, name=None, category=None, endpoint=None, url=None, **kwargs):
     for k, v in kwargs.iteritems():
       setattr(self, k, v)
@@ -26,6 +27,8 @@ class PerspectiveModelView(ModelView):
     ('gender', 
      'text')
 
+  column_list = ('id', 'gender', 'text', 'created_at')
+
   def __init__(self, name=None, category=None, endpoint=None, url=None, **kwargs):
     for k, v in kwargs.iteritems():
       setattr(self, k, v)
@@ -39,6 +42,21 @@ class PerspectiveModelView(ModelView):
       url=url
     )
 
+class SubmissionModelView(ModelView):
+  column_list = ('id', 'perspective_id', 'text', 'likes', 'created_at')
+  def __init__(self, name=None, category=None, endpoint=None, url=None, **kwargs):
+    for k, v in kwargs.iteritems():
+      setattr(self, k, v)
+
+    super(SubmissionModelView, self).__init__(
+      schema.Submission, 
+      query.session, 
+      name=name, 
+      category=category, 
+      endpoint=endpoint, 
+      url=url
+    )
+
 admin.add_view(RoundModelView())
 admin.add_view(PerspectiveModelView())
-admin.add_view(ModelView(schema.Submission, query.session))
+admin.add_view(SubmissionModelView())
