@@ -1,12 +1,21 @@
-<div class="round">
-  <span class="round-id">Round {{latest_round.id}}</span>
-  <span class="time-elapsed"> Started {{elapsed_time}} </span>
-</div>
-<p class="perspective-gender">You are {{perspective.gender}}.</p> 
-<p class="perspective-text">{{perspective.text}}</p>
-<div style="background-color: gray;" id="submission" ng-model="submission.text" autofocus="true" strip-br="false" contenteditable="true"></div>
-<div class="buttons">
-  <p>All submissions are anonymous.</p>
-  <!-- <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button> -->
-  <button class="btn btn-large btn-success" ng-click="post_submission(submission)">Publish</button>
+<div class="write">
+  <div class="row">
+    <div class="col-md-8">
+      <p class="perspective gender">You are <span ng-class="perspective.gender">{{perspective.gender}}</span>.</p> 
+      <p class="perspective text">{{perspective.text}}</p>
+      <p class="perspective teaser">What's going through your head?</p>
+      <div class="submission" ng-model="submission.text" autofocus="true" strip-br="true" contenteditable="true"></div>
+      <div class="buttons">
+        <p>All submissions are anonymous.</p>
+        <!-- <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button> -->
+        <button class="btn btn-large btn-success" ng-click="post_submission(submission)">Publish</button>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="round">
+        <p class="round-id">Round {{latest_round.id}}</p>
+        <p class="time-elapsed"> Started {{elapsed_time}} </p>
+      </div>
+    </div>
+  </div>
 </div>

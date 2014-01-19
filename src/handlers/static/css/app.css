@@ -1,11 +1,23 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
 @import url(http://fonts.googleapis.com/css?family=Lato:400,300italic);
 
+.pull-left {
+  padding-left: 0px;
+}
+
+.btn {
+  border-radius: 0px;
+}
+
 html, body {
   height: 100%;
   width: 100%;
   font-family: 'Lato', sans-serif;
   font-size: 16px;
+}
+
+body {
+  background-color: #f8f8f8;
 }
 
 .shadow {
@@ -40,4 +52,67 @@ nav a {
   padding-right: 20px;
   display: inline-block;
   color: #105B9C;
+}
+
+div.write div.round {
+  text-align: right;
+  margin-bottom: 5px;
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+div.write div.round p {
+  margin-bottom: 0px;
+}
+
+div.write .perspective:first-of-type {
+  margin-top: 20px;
+} 
+
+div.write .perspective:last-of-type {
+  margin-bottom: 20px;
+} 
+
+div.write .perspective {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+div.write .perspective.gender span {
+  font-weight: bold;
+}
+
+div.write .perspective span.female {
+  color: rgb(216, 60, 71);
+}
+
+div.write .perspective span.male {
+  color: rgb(67, 26, 196);
+}
+
+div.write .perspective.teaser {
+  font-style: italic;
+}
+
+div.submission {
+  background-color: rgb(223, 218, 218);
+  padding: 10px;
+  font-size: 16px;
+  font-family: 'Montserrat', serif;
+  min-height: 250px;
+  line-height: 25px;
+}
+
+div.write .buttons {
+  margin-bottom: 50px;
+}
+
+div.write .buttons p {
+  margin-top: 10px;
+  text-align: right;
+}
+
+div.write button {
+  float: right;
 }

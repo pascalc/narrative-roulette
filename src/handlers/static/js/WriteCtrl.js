@@ -39,6 +39,7 @@ function WriteCtrl($scope, $routeParams, $http, $interval) {
   }
 
   angular.element(document).ready(function () {
+    document.querySelectorAll("div.write div.submission")[0].focus();
     var perspective_id = $routeParams.perspectiveId;
     if (perspective_id) {
       $scope.get_perspective(perspective_id);
