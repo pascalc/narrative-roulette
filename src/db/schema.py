@@ -4,7 +4,7 @@ from copy import deepcopy
 
 import sqlalchemy as sql
 from sqlalchemy import Table, Column, Integer, String, DateTime, Text, ForeignKey
-from sqlalchemy import orm
+from sqlalchemy import orm, func, desc
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.ext.hybrid import hybrid_property
 
@@ -43,7 +43,16 @@ class Submission(Base, MyMixin):
   text = Column(Text, nullable=False)
   likes = Column(Integer, default=0)
   created_at = Column(DateTime, default=datetime.now)
+  
   # Round = latest round before created_at with correct perspective_id
+  @hybrid_property
+  def round_id(self):
+    return session.query(Round)\
+      .filter(Round.start_time < self.created_at)\
+      .filter(Round.perspective_id == self.perspective_id)\
+      .order_by(desc(Round.start_time))\
+      .first()\
+      .id
 
   def __repr__(self):
     return "Submission %s" % self.id

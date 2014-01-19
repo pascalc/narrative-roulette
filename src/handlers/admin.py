@@ -43,7 +43,7 @@ class PerspectiveModelView(ModelView):
     )
 
 class SubmissionModelView(ModelView):
-  column_list = ('id', 'perspective_id', 'text', 'likes', 'created_at')
+  column_list = ('id', 'perspective_id', 'round_id', 'text', 'likes', 'created_at')
   def __init__(self, name=None, category=None, endpoint=None, url=None, **kwargs):
     for k, v in kwargs.iteritems():
       setattr(self, k, v)
