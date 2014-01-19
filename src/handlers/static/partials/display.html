@@ -1,4 +1,16 @@
-<h2>Round {{latest_round.id}}</h2>
-<p class="perspective-gender">You are {{latest_round.perspective.gender}}.</p> 
-<p class="perspective-text">{{latest_round.perspective.text}}</p>
-<p class="time-elapsed">Started {{elapsed_time}}</p>
+<div class="current-round">
+  <h2>Round {{latest_round.id}}</h2>
+  <p class="perspective-gender">You are {{latest_round.perspective.gender}}.</p> 
+  <p class="perspective-text">{{latest_round.perspective.text}}</p>
+  <p class="time-elapsed">Started {{elapsed_time}}</p>
+</div>
+
+<div class="new-round">
+  <h2>New Round</h2>
+  <p class="perspective-gender">You are {{random_perspective.gender}}.</p> 
+  <p class="perspective-text">{{random_perspective.text}}</p>
+  <div class="buttons">
+    <button class="btn btn-primary" ng-click="get_random_perspective()">Spin Roulette</button>
+    <button class="btn btn-success" ng-click="post_new_round()">Start round</button>
+  </div>
+</div>
