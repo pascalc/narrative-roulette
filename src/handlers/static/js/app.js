@@ -17,10 +17,6 @@ app.config(['$routeProvider',
         templateUrl: 'partials/display.html',
         controller: 'DisplayCtrl'
       }).
-      when('/round/:roundId/submission/:submissionId', {
-        templateUrl: 'partials/submission.html',
-        controller: 'SubmissionCtrl'
-      }).
       when('/round/:roundId', {
         templateUrl: 'partials/submission.html',
         controller: 'SubmissionCtrl'
@@ -29,10 +25,10 @@ app.config(['$routeProvider',
       //   templateUrl: 'partials/rounds.html',
       //   controller: 'RoundsCtrl'
       // }).
-      when('/submission/:submissionId', {
-        templateUrl: 'partials/submission.html',
-        controller: 'SubmissionCtrl'
-      }).
+      // when('/submission/:submissionId', {
+      //   templateUrl: 'partials/submission.html',
+      //   controller: 'SubmissionCtrl'
+      // }).
       otherwise({
         redirectTo: '/write'
       });

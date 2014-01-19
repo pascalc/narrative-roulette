@@ -1,1 +1,28 @@
-<h2>Submissions</h2>
+<h2>Round {{round.id}}</h2>
+
+<p class="perspective-gender">You are {{round.perspective.gender}}.</p> 
+<p class="perspective-text">{{round.perspective.text}}</p>
+
+<div class="submission-viewer" ng-show="round.submissions.length > 0">
+  <div class="controls">
+    <button class="btn btn-primary" 
+      ng-click="show_submission_index = show_submission_index - 1"
+      ng-hide="show_submission_index == 0">
+      Previous
+    </button>
+    <button class="btn btn-primary" 
+      ng-click="show_submission_index = show_submission_index + 1"
+      ng-hide="show_submission_index == round.submissions.length - 1">
+      Next
+    </button>
+  </div>
+  <ul>
+    <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
+      <h3>Submission {{$index + 1}}</h3>
+      {{sub.text}}
+    </li>
+  </ul>
+</div>
+<div ng-show="round.submissions.length == 0">
+  No submissions for this round.
+</div>
