@@ -1,8 +1,12 @@
+<div class="round">
+  <span class="round-id">Round {{latest_round.id}}</span>
+  <span class="time-elapsed"> Started {{elapsed_time}} </span>
+</div>
 <p class="perspective-gender">You are {{perspective.gender}}.</p> 
 <p class="perspective-text">{{perspective.text}}</p>
 <textarea name="text" id="submission" ng-model="submission.text"></textarea>
 <div class="buttons">
   <p>All submissions are anonymous.</p>
-  <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button>
+  <!-- <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button> -->
   <button class="btn btn-large btn-success" ng-click="post_submission(submission)">Publish</button>
 </div>
