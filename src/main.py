@@ -18,7 +18,7 @@ container = tornado.wsgi.WSGIContainer(app)
 application = tornado.web.Application([
   (r"/ws", WSHandler),
   (r".*", tornado.web.FallbackHandler, dict(fallback=container)),
-])
+], debug=True)
 
 if __name__ == "__main__":
   application.listen(5000)
