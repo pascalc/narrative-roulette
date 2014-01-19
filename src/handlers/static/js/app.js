@@ -1,5 +1,6 @@
 var app = angular.module('NarrativeRoulette', [
   'ngRoute',
+  'contenteditable',
 ]);
  
 app.config(['$routeProvider',

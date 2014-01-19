@@ -19,7 +19,7 @@
   <ul>
     <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
       <h3>Submission {{$index + 1}}</h3>
-      {{sub.text}}
+      <div ng-model="sub.text" contenteditable="false"></div>
     </li>
   </ul>
 </div>

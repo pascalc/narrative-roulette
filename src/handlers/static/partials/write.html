@@ -4,7 +4,7 @@
 </div>
 <p class="perspective-gender">You are {{perspective.gender}}.</p> 
 <p class="perspective-text">{{perspective.text}}</p>
-<textarea name="text" id="submission" ng-model="submission.text"></textarea>
+<div style="background-color: gray;" id="submission" ng-model="submission.text" autofocus="true" strip-br="false" contenteditable="true"></div>
 <div class="buttons">
   <p>All submissions are anonymous.</p>
   <!-- <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button> -->
