@@ -1,1 +1,17 @@
-<h2>Rounds</h2>
+<div class="current-round">
+  <h3>Current Round</h3>
+  <a href="#/round/{{rounds[0].id}}"><h4>Round {{rounds[0].id}}</h4></a>
+  <p class="perspective-gender">You are {{rounds[0].perspective.gender}}.</p> 
+  <p class="perspective-text">{{rounds[0].perspective.text}}</p>  
+  <p class="submission-length">{{rounds[0].submissions.length}} submissions</p>
+</div>
+
+<div class="past-rounds">
+  <h3>Past Rounds</h3>
+  <div ng-repeat="round in rounds.slice(1)">
+    <a href="#/round/{{round.id}}"><p class="old-round-id">Round {{round.id}}</p></a>
+    <p class="perspective-gender">You are {{round.perspective.gender}}.</p> 
+    <p class="perspective-text">{{round.perspective.text}}</p>  
+    <p class="submission-length">{{round.submissions.length}} submissions</p>
+  </div>
+</div>
