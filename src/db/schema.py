@@ -68,10 +68,17 @@ class Round(Base, MyMixin):
 
   @hybrid_property
   def submissions(self):
-    return [s.to_dict() for s in session.query(Submission)\
-      .filter(Submission.created_at >= self.start_time)\
-      .filter(Submission.perspective_id == self.perspective_id)\
-      .all()]
+    later_round = session.query(Round)\
+      .filter(Round.start_time > self.start_time)\
+      .filter(Round.perspective_id == self.perspective_id)\
+      .first()
+    
+    subs = session.query(Submission)\
+      .filter(Submission.created_at >= self.start_time)
+    if later_round:
+      subs = subs.filter(Submission.created_at < later_round.start_time)
+    subs = subs.filter(Submission.perspective_id == self.perspective_id).all()
+    return [s.to_dict() for s in subs]
 
   def __repr__(self):
     return "Round %s" % self.id
