@@ -1,9 +1,11 @@
 var getRandomPerspective,
     getPerspective,
     postSubmission;
-function WriteCtrl($scope, $routeParams, $http, $interval) {
+function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService) {
   $scope.perspective;
-  $scope.submission;
+  $scope.submission = {
+    'text' : undefined
+  };
 
   function renderPerspective(response) {
     $scope.perspective = response.data;
@@ -11,11 +13,11 @@ function WriteCtrl($scope, $routeParams, $http, $interval) {
   }
 
   $scope.get_random_perspective = function() {
-    $http.get("/api/perspective/random").then(renderPerspective);
+    return $http.get("/api/perspective/random").then(renderPerspective);
   }
 
   $scope.get_perspective = function(id) {
-    $http.get("/api/perspective/" + id).then(renderPerspective);
+    return $http.get("/api/perspective/" + id).then(renderPerspective);
   }
 
   $scope.post_submission = function(submission) {
@@ -39,17 +41,40 @@ function WriteCtrl($scope, $routeParams, $http, $interval) {
   }
 
   angular.element(document).ready(function () {
-    document.querySelectorAll("div.write div.submission")[0].focus();
     var perspective_id = $routeParams.perspectiveId;
     if (perspective_id) {
-      $scope.get_perspective(perspective_id);
+      $scope.get_perspective(perspective_id)
+        .then(loadSavedText);
     } else {
       $scope.get_latest_round().then(function(response) {      
-        $scope.get_perspective($scope.latest_round.perspective.id);
+        $scope.get_perspective($scope.latest_round.perspective.id)
+          .then(loadSavedText);
         $interval($scope.update_elapsed_time, 1000);
       });
     }
   });
+
+  $scope.$watch("submission.text",
+    function(newValue, oldValue) {
+      if (!angular.isUndefined(newValue) && $scope.perspective) {
+        var key = $scope.perspective.id;
+        // console.log("Saving", newValue, "under key", key);
+        localStorageService.remove(key)
+        localStorageService.add(key, newValue);  
+      }
+    }, 
+    true
+  );
+
+  function loadSavedText() {
+    var key = $scope.perspective.id;
+    var savedText = localStorageService.get(key)
+    if (!angular.isUndefined(savedText) && savedText != null) {
+      console.log("Loaded", savedText, "with key", key);
+      $scope.submission.text = savedText;      
+    }
+    document.querySelectorAll("div.write div.submission")[0].focus();
+  }
 
   getRandomPerspective = $scope.get_random_perspective;
   getPerspective = $scope.get_perspective;

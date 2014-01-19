@@ -1,6 +1,7 @@
 var app = angular.module('NarrativeRoulette', [
   'ngRoute',
   'contenteditable',
+  'LocalStorageModule',
 ]);
  
 app.config(['$routeProvider',
@@ -33,4 +34,9 @@ app.config(['$routeProvider',
       otherwise({
         redirectTo: '/write'
       });
-  }]);
+  }])
+  .config(['localStorageServiceProvider', 
+    function(localStorageServiceProvider) {
+      localStorageServiceProvider.setPrefix('narrativeRoulette');
+    }]
+  );
