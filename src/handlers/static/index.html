@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- Bootstrap -->
     <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -14,16 +15,18 @@
     <![endif]-->
   </head>
   <body>
-    <div class="container">
-      <header>
+    <header class="cover">
+      <div class="container">
         <h1>Narrative Roulette</h1>
-        <nav>
-          <a href="#/write">Write</a>
-          <a href="#/display">Display</a>
-          <a href="#/rounds">Submissions</a>
-        </nav>
-      </header>
-      <div ng-view></div>
+      </div>
+    </header>
+    <div class="container">
+      <nav class="row col-xs-12">
+        <a href="#/write">Write</a>
+        <a href="#/display">Display</a>
+        <a href="#/rounds">Submissions</a>
+      </nav>
+      <div class="row col-xs-12" ng-view></div>
     </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
