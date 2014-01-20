@@ -1,11 +1,12 @@
 var getRandomPerspective,
     getPerspective,
     postSubmission;
-function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, $timeout) {
+function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, $timeout, $location) {
   $scope.perspective;
   $scope.submission = {
     'text' : undefined
   };
+  $scope.submit_count = 0;
 
   function renderPerspective(response) {
     $scope.perspective = response.data;
@@ -23,9 +24,18 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
   $scope.post_submission = function(submission) {
     submission.perspective_id = $scope.perspective.id;
     console.log("Submission:", submission);
-    $http.post("/api/submission", submission).then(function(response) {
-      console.log(response);
-    });
+    $http.post("/api/submission", submission)
+      .then(function(response) {
+        console.log(response);
+        $location.path("/round/" + response.data.round_id);
+      });
+  }
+
+  $scope.submit_clicked = function(submit_count) {
+    $scope.submit_count = $scope.submit_count + 1;
+    if ($scope.submit_count == 2) {
+      $scope.post_submission($scope.submission);
+    }
   }
 
   $scope.latest_round;
@@ -59,7 +69,8 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
       if (!angular.isUndefined(newValue) && $scope.perspective) {
         var key = $scope.perspective.id;
         // console.log("Saving", newValue, "under key", key);
-        localStorageService.remove(key)
+        $scope.submit_count = 0;
+        localStorageService.remove(key);
         localStorageService.add(key, newValue);  
       }
     }, 

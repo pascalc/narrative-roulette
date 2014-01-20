@@ -8,7 +8,11 @@
       <div class="buttons">
         <p>All submissions are anonymous.</p>
         <!-- <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button> -->
-        <button class="btn btn-large btn-success" ng-disabled="submission.text.length == 0" ng-click="post_submission(submission)">Publish</button>
+        <button class="btn btn-large btn-success" ng-disabled="submission.text.length == 0" ng-click="submit_clicked(submit_count)">
+          <span ng-if="submit_count == 0">Publish</span>
+          <span ng-if="submit_count == 1">Are you sure?</span>
+          <span ng-if="submit_count >= 2">Submitted!</span>
+        </button>
       </div>
     </div>
     <div class="col-md-4">
