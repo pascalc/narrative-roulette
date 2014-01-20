@@ -1,7 +1,7 @@
 var getRandomPerspective,
     getPerspective,
     postSubmission;
-function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService) {
+function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, $timeout) {
   $scope.perspective;
   $scope.submission = {
     'text' : undefined
@@ -72,9 +72,11 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService) 
     if (!angular.isUndefined(savedText) && savedText != null) {
       console.log("Loaded", savedText, "with key", key);
       $scope.submission.text = savedText;      
-    } else {
-      document.querySelectorAll("div.write div.submission")[0].focus();
     }
+    $timeout(function() {
+        document.querySelectorAll("div.write div.submission")[0].focus();
+      }, 500
+    );
   }
 
   getRandomPerspective = $scope.get_random_perspective;
