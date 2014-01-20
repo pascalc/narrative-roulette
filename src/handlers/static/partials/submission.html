@@ -2,7 +2,7 @@
   <div class="row">
     <div class="col-md-12">
       <h3>Round {{round.id}}</h3>
-      <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm'}}</p>
+      <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
 
       <h4 class="perspective gender">You are <span ng-class="round.perspective.gender">{{round.perspective.gender}}.</span></h4> 
       <h4 class="perspective text">{{round.perspective.text}}</h4>
@@ -26,7 +26,7 @@
       <ul class="col-md-8">
         <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
           <div class="submission" ng-model="sub.text" contenteditable="false"></div>
-          <p class="submitted-at">Submitted {{sub.created_at | date:'EEEE MMMM d y HH:mm'}}</p>
+          <p class="submitted-at">Submitted {{sub.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
         </li>
       </ul>
     </div>
