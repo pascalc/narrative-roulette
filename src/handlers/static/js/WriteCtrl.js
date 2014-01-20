@@ -47,7 +47,7 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
 
   $scope.elapsed_time;
   $scope.update_elapsed_time = function() {
-    $scope.elapsed_time = moment($scope.latest_round.start_time).tz("Europe/Stockholm").fromNow();
+    $scope.elapsed_time = moment.utc($scope.latest_round.start_time).tz("Europe/Stockholm").fromNow();
   }
 
   angular.element(document).ready(function () {

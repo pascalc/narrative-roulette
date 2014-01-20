@@ -15,7 +15,7 @@ function DisplayCtrl($scope, $http, $interval, $timeout) {
 
   $scope.elapsed_time;
   $scope.update_elapsed_time = function() {
-    $scope.elapsed_time = moment($scope.latest_round.start_time).tz("Europe/Stockholm").fromNow();
+    $scope.elapsed_time = moment.utc($scope.latest_round.start_time).tz("Europe/Stockholm").fromNow();
   }
 
   // New round
