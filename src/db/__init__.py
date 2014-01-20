@@ -7,7 +7,7 @@ import sqlalchemy as sql
 HOST = "localhost"
 USERNAME = "root"
 PASSWORD = ""
-DB_NAME = "empathise_hack_education"
+DB_NAME = "narrative_roulette"
 
 connection_string = \
   "mysql://{user}:{password}@{host}/{db}".format(
