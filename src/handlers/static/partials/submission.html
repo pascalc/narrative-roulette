@@ -23,7 +23,7 @@
           Next
         </button>
       </div>
-      <ul class="col-md-8">
+      <ul class="col-md-8 col-xs-12">
         <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
           <div class="submission" ng-model="sub.text" contenteditable="false"></div>
           <p class="submitted-at">Submitted {{sub.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
