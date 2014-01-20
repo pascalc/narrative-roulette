@@ -48,6 +48,11 @@ header.cover {
   background-size: cover;
 }
 
+header.cover a {
+  text-decoration: none;
+  color: inherit;
+}
+
 nav {
   background-color: rgb(207,181,150);
   font-size: 18px;
