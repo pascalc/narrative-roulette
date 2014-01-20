@@ -29,6 +29,10 @@ h1 {
   color: white;
 }
 
+h2, h3 {
+  font-family: 'Lato', sans-serif;
+}
+
 .cover {
   width: 100%;
 }
@@ -79,15 +83,15 @@ div.write .perspective {
   margin-bottom: 5px;
 }
 
-div.write .perspective.gender span {
+.perspective.gender span {
   font-weight: bold;
 }
 
-div.write .perspective span.female {
+.perspective span.female {
   color: rgb(216, 60, 71);
 }
 
-div.write .perspective span.male {
+.perspective span.male {
   color: rgb(67, 26, 196);
 }
 
@@ -115,4 +119,21 @@ div.write .buttons p {
 
 div.write button {
   float: right;
+}
+
+div.display div.buttons .start-round {
+  float: right;
+}
+
+div.display div.round h3.text {
+  margin-top: 10px;
+  margin-bottom: 20px;
+}
+
+div.display .time-elapsed {
+  font-size: 20px;
+}
+
+div.display div.buttons button {
+  font-size: 18px;
 }

@@ -1,7 +1,7 @@
 var getLatestRound,
     updateElapsedTime,
     postNewRound;
-function DisplayCtrl($scope, $http, $interval) {
+function DisplayCtrl($scope, $http, $interval, $timeout) {
   // Latest round
 
   $scope.latest_round;
