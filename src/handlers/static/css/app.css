@@ -30,7 +30,7 @@ h1 {
   font-size: 40px;
 }
 
-h2, h3 {
+h2, h3, h4, h5 {
   font-family: 'Lato', sans-serif;
 }
 
@@ -137,4 +137,20 @@ div.display .time-elapsed {
 
 div.display div.buttons button {
   font-size: 18px;
+}
+
+div.rounds div.current-round h3 {
+  margin-bottom: 10px;
+}
+
+div.rounds div.past-round {
+  margin-bottom: 50px;
+}
+
+div.rounds div.past-round p.perspective.gender{
+  margin-bottom: 2px;
+}
+
+div.rounds div.past-rounds {
+  margin-bottom: 50px;
 }
