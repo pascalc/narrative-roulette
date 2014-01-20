@@ -72,8 +72,9 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService) 
     if (!angular.isUndefined(savedText) && savedText != null) {
       console.log("Loaded", savedText, "with key", key);
       $scope.submission.text = savedText;      
+    } else {
+      document.querySelectorAll("div.write div.submission")[0].focus();
     }
-    document.querySelectorAll("div.write div.submission")[0].focus();
   }
 
   getRandomPerspective = $scope.get_random_perspective;
