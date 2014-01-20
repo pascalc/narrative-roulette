@@ -2,6 +2,8 @@ var getLatestRound,
     updateElapsedTime,
     postNewRound;
 function DisplayCtrl($scope, $http, $interval, $timeout) {
+  $scope.spinning = false;
+
   // Latest round
 
   $scope.latest_round;
@@ -19,8 +21,10 @@ function DisplayCtrl($scope, $http, $interval, $timeout) {
   // New round
   $scope.random_perspective;
   $scope.get_random_perspective = function() {
+    $scope.spinning = true;
     $http.get("/api/perspective/random").then(function(response) {
       $scope.random_perspective = response.data;
+      $timeout(function() { $scope.spinning = false; }, 500);
     });
   }
 
