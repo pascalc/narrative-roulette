@@ -1,28 +1,37 @@
-<h2>Round {{round.id}}</h2>
+<div class="submission-view">
+  <div class="row">
+    <div class="col-md-12">
+      <h3>Round {{round.id}}</h3>
+      <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm'}}</p>
 
-<p class="perspective-gender">You are {{round.perspective.gender}}.</p> 
-<p class="perspective-text">{{round.perspective.text}}</p>
-
-<div class="submission-viewer" ng-show="round.submissions.length > 0">
-  <div class="controls">
-    <button class="btn btn-primary" 
-      ng-click="show_submission_index = show_submission_index - 1"
-      ng-hide="show_submission_index == 0">
-      Previous
-    </button>
-    <button class="btn btn-primary" 
-      ng-click="show_submission_index = show_submission_index + 1"
-      ng-hide="show_submission_index == round.submissions.length - 1">
-      Next
-    </button>
+      <h4 class="perspective gender">You are <span ng-class="round.perspective.gender">{{round.perspective.gender}}.</span></h4> 
+      <h4 class="perspective text">{{round.perspective.text}}</h4>
+    </div>
   </div>
-  <ul>
-    <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
-      <h3>Submission {{$index + 1}} of {{round.submissions.length}}</h3>
-      <div ng-model="sub.text" contenteditable="false"></div>
-    </li>
-  </ul>
-</div>
-<div ng-show="round.submissions.length == 0">
-  No submissions for this round.
+  <div class="row">
+    <div class="submission-viewer col-md-12" ng-show="round.submissions.length > 0">
+      <div class="controls pull-left col-md-8">
+        <button class="btn btn-primary previous-sub col-xs-2" 
+          ng-click="show_submission_index = show_submission_index - 1"
+          ng-disabled="show_submission_index == 0">
+          Previous
+        </button>
+        <div class="sub-counter col-xs-8">Submission {{show_submission_index + 1}} of {{round.submissions.length}}</div>
+        <button class="btn btn-primary next-sub col-xs-2" 
+          ng-click="show_submission_index = show_submission_index + 1"
+          ng-disabled="show_submission_index == round.submissions.length - 1">
+          Next
+        </button>
+      </div>
+      <ul class="col-md-8">
+        <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
+          <div class="submission" ng-model="sub.text" contenteditable="false"></div>
+          <p class="submitted-at">Submitted {{sub.created_at | date:'EEEE MMMM d y HH:mm'}}</p>
+        </li>
+      </ul>
+    </div>
+    <div class="col-md-12" ng-show="round.submissions.length == 0">
+      No submissions for this round.
+    </div>
+  </div>
 </div>

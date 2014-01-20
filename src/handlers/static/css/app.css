@@ -28,6 +28,8 @@ h1 {
   font-family: 'Montserrat', serif;
   color: white;
   font-size: 40px;
+  position: relative;
+  left: -3px;
 }
 
 h2, h3, h4, h5 {
@@ -153,4 +155,57 @@ div.rounds div.past-round p.perspective.gender{
 
 div.rounds div.past-rounds {
   margin-bottom: 50px;
+}
+
+div.submission-view {
+  margin-bottom: 50px;
+}
+
+div.submission-view h3 {
+  margin-bottom: 5px;
+}
+
+div.submission-view h4.perspective {
+  font-size: 20px;
+}
+
+div.submission-view .perspective:first-of-type {
+  margin-top: 20px;
+} 
+
+div.submission-view .perspective:last-of-type {
+  margin-bottom: 20px;
+} 
+
+div.submission-view .perspective {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+div.submission-view .controls {
+  margin-top: 20px;
+  margin-bottom: 0px;
+  background-color: #EEEEEE;
+  padding-right: 0;
+}
+
+div.submission-view .controls .next-sub {
+  float: right;
+}
+
+div.submission-view .controls .sub-counter {
+  display: inline-block;
+  text-align: center;
+  line-height: 33px;
+}
+
+div.submission-view ul {
+  list-style: none;
+  padding-left: 0;
+  padding-right: 0;
+}
+
+div.submission-view .submitted-at {
+  float: right;
 }
