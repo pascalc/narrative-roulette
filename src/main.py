@@ -10,6 +10,7 @@ from handlers.socket import WSHandler
 import tornado.wsgi
 import tornado.ioloop
 import tornado.web
+from tornado.log import enable_pretty_logging
 
 app.debug
 # app.run(port=5000)
@@ -22,4 +23,5 @@ application = tornado.web.Application([
 
 if __name__ == "__main__":
   application.listen(5000)
+  enable_pretty_logging()
   tornado.ioloop.IOLoop.instance().start()
