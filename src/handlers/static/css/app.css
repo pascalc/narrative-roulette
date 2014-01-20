@@ -154,12 +154,19 @@ div.display div.buttons button {
   font-size: 18px;
 }
 
+div.display .roulette {
+  height: 120px;
+}
+
 div.display .spinning {
+  transform: skew(180deg,0deg);
   -webkit-transform: skew(180deg,0deg);
+  -moz-transform: skew(180deg,0deg);
+  -o-transform: skew(180deg,0deg);
   -webkit-transition: -webkit-transform 0.5s;
-  /*-moz-transition: -moz-transform 0.5s; 
+  -moz-transition: -moz-transform 0.5s; 
   -o-transition: -o-transform 0.5s; 
-  transition: transform 0.5s; */
+  transition: transform 0.5s; 
   -webkit-transform-style: preserve-3d; 
   -moz-transform-style: preserve-3d; 
   -o-transform-style: preserve-3d; 
