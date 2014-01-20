@@ -5,8 +5,8 @@ import sqlalchemy as sql
 # Localhost 
 
 HOST = "localhost"
-USERNAME = "root"
-PASSWORD = ""
+USERNAME = "roulette"
+PASSWORD = "gyde67dexs7"
 DB_NAME = "narrative_roulette"
 
 connection_string = \
