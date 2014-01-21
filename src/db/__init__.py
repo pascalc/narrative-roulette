@@ -10,7 +10,7 @@ PASSWORD = "gyde67dexs7"
 DB_NAME = "narrative_roulette"
 
 connection_string = \
-  "mysql://{user}:{password}@{host}/{db}".format(
+  "mysql://{user}:{password}@{host}/{db}?charset=utf8".format(
     user=USERNAME,
     host=HOST,
     password=PASSWORD,
