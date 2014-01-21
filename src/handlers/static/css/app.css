@@ -155,7 +155,7 @@ div.display div.buttons button {
 }
 
 div.display .roulette {
-  height: 120px;
+  min-height: 200px;
 }
 
 div.display .spinning {
