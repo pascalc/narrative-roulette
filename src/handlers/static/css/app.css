@@ -36,6 +36,10 @@ h2, h3, h4, h5 {
   font-family: 'Lato', sans-serif;
 }
 
+h2 {
+  margin-top: 10px;
+}
+
 .cover {
   width: 100%;
 }
@@ -249,5 +253,9 @@ div.submission-view .submitted-at {
 @media all and (max-width: 600px) {
   h1 {
     font-size: 24px;
+  }
+
+  h2 {
+    font-size: 18px;
   }
 }
