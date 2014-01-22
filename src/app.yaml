@@ -8,7 +8,7 @@ handlers:
 - url: /api/.*
   script: main.app
 - url: /admin.*
-  script: handlers.admin.app
+  script: main.app
   login: admin
 - url: /
   static_files: handlers/static/index.html

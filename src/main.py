@@ -1,6 +1,6 @@
 # Flask
 from handlers.rest import app
-# import handlers.admin
+import handlers.admin
 import handlers.custom
 
 # Tornado WebSocket handler
