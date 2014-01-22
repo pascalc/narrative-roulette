@@ -2,5 +2,5 @@ bin/
 include/
 /lib/
 *.pyc
-
+src/config.py
 build

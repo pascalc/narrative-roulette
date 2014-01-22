@@ -1,0 +1,27 @@
+application: narrative-roulette
+version: 1
+runtime: python27
+api_version: 1
+threadsafe: yes
+
+handlers:
+- url: /api/.*
+  script: main.app
+- url: /admin.*
+  script: handlers.admin.app
+  login: admin
+- url: /
+  static_files: handlers/static/index.html
+  upload: handlers/static/index\.html
+- url: /(.*)
+  static_files: handlers/static/\1
+  upload: handlers/static/(.*)
+
+builtins:
+- deferred: on
+
+libraries:
+- name: jinja2
+  version: latest
+- name: MySQLdb
+  version: "latest"
