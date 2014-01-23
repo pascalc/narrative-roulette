@@ -2,6 +2,7 @@ var app = angular.module('NarrativeRoulette', [
   'ngRoute',
   'contenteditable',
   'LocalStorageModule',
+  'ngProgress',
 ]);
  
 app.config(['$routeProvider',
@@ -40,3 +41,56 @@ app.config(['$routeProvider',
       localStorageServiceProvider.setPrefix('narrativeRoulette');
     }]
   );
+
+app.factory('interceptorNgProgress', function ($injector) {
+  var complete_progress, getNgProgress, ng_progress, working;
+  ng_progress = null;
+  working = false;
+
+  getNgProgress = function() {
+    ng_progress = ng_progress || $injector.get("ngProgress");
+    ng_progress.color("rgb(207,181,150)");
+    return ng_progress;
+  };
+
+  complete_progress = function() {
+    var ngProgress;
+    if (working) {
+      ngProgress = getNgProgress();
+      ngProgress.complete();
+      return working = false;
+    }
+  };
+
+  return {
+    request: function(request) {
+      var ngProgress;
+      ngProgress = getNgProgress();
+      if (request.url.indexOf('.html') > 0) {
+        return request;
+      }
+      if (!working) {
+        ngProgress.reset();
+        ngProgress.start();
+        working = true;
+      }
+      return request;
+    },
+    requestError: function(request) {
+      complete_progress();
+      return request;
+    },
+    response: function(response) {
+      complete_progress();
+      return response;
+    },
+    responseError: function(response) {
+      complete_progress();
+      return response;
+    }
+  }
+});
+
+app.config(function ($httpProvider) {
+  $httpProvider.interceptors.push('interceptorNgProgress');
+});
