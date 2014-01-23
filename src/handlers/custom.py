@@ -10,7 +10,7 @@ def redirect(target, **kwargs):
   referer = request.headers.get("Referer")
   url = target
   if referer:
-    url = "%s/%s" % (referer, target)
+    url = referer + target[1:]
   return flask.redirect(url)
 
 @app.route('/')
