@@ -201,57 +201,57 @@ div.rounds div.past-rounds {
   margin-bottom: 50px;
 }
 
-div.submission-view {
+div.submissionList-view {
   margin-bottom: 50px;
 }
 
-div.submission-view h3 {
+div.submissionList-view h3 {
   margin-bottom: 5px;
 }
 
-div.submission-view h4.perspective {
+div.submissionList-view h4.perspective {
   font-size: 20px;
 }
 
-div.submission-view .perspective:first-of-type {
+div.submissionList-view .perspective:first-of-type {
   margin-top: 20px;
 } 
 
-div.submission-view .perspective:last-of-type {
+div.submissionList-view .perspective:last-of-type {
   margin-bottom: 20px;
 } 
 
-div.submission-view .perspective {
+div.submissionList-view .perspective {
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
 }
 
-div.submission-view .controls {
+div.submissionList-view .controls {
   margin-top: 0px;
   margin-bottom: 0px;
   background-color: #EEEEEE;
   padding-right: 0;
 }
 
-div.submission-view .controls .next-sub {
+div.submissionList-view .controls .next-sub {
   float: right;
 }
 
-div.submission-view .controls .sub-counter {
+div.submissionList-view .controls .sub-counter {
   display: inline-block;
   text-align: center;
   line-height: 33px;
 }
 
-div.submission-view ul {
+div.submissionList-view ul {
   list-style: none;
   padding-left: 0;
   padding-right: 0;
   margin-bottom: 0;
 }
 
-div.submission-view .submitted-at {
+.submitted-at {
   text-align: right;
 }
 

@@ -28,10 +28,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/submissions.html',
         controller: 'SubmissionsCtrl'
       }).
-      // when('/submission/:submissionId', {
-      //   templateUrl: 'partials/submission.html',
-      //   controller: 'SubmissionCtrl'
-      // }).
+      when('/submission/:submissionId', {
+        templateUrl: 'partials/submission.html',
+        controller: 'SubmissionCtrl'
+      }).
       otherwise({
         redirectTo: '/write'
       });

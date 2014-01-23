@@ -1,0 +1,22 @@
+<div class="submission-view">
+  <div class="row">
+    <div class="col-md-8">
+      <h4 class="perspective">Imagine this:</h4>
+      <h4 class="perspective gender">You are <span ng-class="submission.perspective.gender">{{submission.perspective.gender}}.</span></h4> 
+      <h4 class="perspective text">{{submission.perspective.text}}</h4>
+    </div>
+    <div class="col-md-4">
+      <div ng-show="submission.round_id">
+        <a href="#/round/{{submission.round_id}}">More from round {{submission.round_id}}.</a>
+      </div>
+      <a href="#/perspective/{{submission.perspective_id}}">More from this perspective.</a>
+    </div>
+  </div>
+  <div class="row">
+      <div class="col-md-8 col-xs-12">
+        <div class="submission" ng-model="submission.text" contenteditable="false"></div>
+        <p class="submitted-at">Submitted {{submission.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
+      </div>
+  </div>
+</div>
+
