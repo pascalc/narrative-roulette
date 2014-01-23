@@ -1,5 +1,5 @@
 @import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);
-@import url(http://fonts.googleapis.com/css?family=Lato:400,300italic);
+@import url(http://fonts.googleapis.com/css?family=Lato:400,300,300italic);
 
 .pull-left {
   padding-left: 0px;
@@ -41,6 +41,7 @@ header.cover h2 {
   font-weight: lighter;
   position: relative;
   color: white;
+  font-style: italic;
 }
 
 .cover {
@@ -258,7 +259,7 @@ div.submission-view .submitted-at {
     font-size: 32px;
   }
 
-  h2 {
-    font-size: 24px;
+  header.cover h2 {
+    display: none;
   }
 }
