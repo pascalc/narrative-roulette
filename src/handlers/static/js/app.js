@@ -21,12 +21,12 @@ app.config(['$routeProvider',
         controller: 'DisplayCtrl'
       }).
       when('/round/:roundId', {
-        templateUrl: 'partials/submission.html',
-        controller: 'SubmissionCtrl'
+        templateUrl: 'partials/submissionList.html',
+        controller: 'SubmissionListCtrl'
       }).
-      when('/rounds', {
-        templateUrl: 'partials/rounds.html',
-        controller: 'RoundCtrl'
+      when('/submissions', {
+        templateUrl: 'partials/submissions.html',
+        controller: 'SubmissionsCtrl'
       }).
       // when('/submission/:submissionId', {
       //   templateUrl: 'partials/submission.html',

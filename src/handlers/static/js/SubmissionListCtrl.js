@@ -1,4 +1,4 @@
-function SubmissionCtrl($scope, $routeParams, $http) {
+function SubmissionListCtrl($scope, $routeParams, $http) {
   $scope.round;
   $scope.show_submission_index = 0;
   $scope.get_round = function(round_id) {
