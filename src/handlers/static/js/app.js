@@ -3,6 +3,7 @@ var app = angular.module('NarrativeRoulette', [
   'contenteditable',
   'LocalStorageModule',
   'ngProgress',
+  'ngFacebook',
 ]);
  
 app.config(['$routeProvider',
@@ -40,7 +41,21 @@ app.config(['$routeProvider',
     function(localStorageServiceProvider) {
       localStorageServiceProvider.setPrefix('narrativeRoulette');
     }]
-  );
+  )
+  .config( function( $facebookProvider ) {
+    $facebookProvider.setAppId('629563240412158');
+  });
+
+app.run( function( $rootScope ) {
+  // Cut and paste the "Load the SDK" code from the facebook javascript sdk page.
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "//connect.facebook.net/en_US/all.js";
+     fjs.parentNode.insertBefore(js, fjs);
+ }(document, 'script', 'facebook-jssdk'));
+});
 
 app.factory('interceptorNgProgress', function ($injector) {
   var complete_progress, getNgProgress, ng_progress, working;
