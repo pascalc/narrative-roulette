@@ -9,10 +9,10 @@
       <div class="buttons">
         <p>All submissions are anonymous.</p>
         <!-- <button class="btn btn-large" ng-click="get_random_perspective()">Another perspective</button> -->
-        <button class="btn btn-large btn-success" ng-disabled="submission.text.length == 0" ng-click="submit_clicked(submit_count)">
+        <button class="btn btn-large btn-success" ng-disabled="submission.text.length == 0 || submit_count >= 2" ng-click="submit_clicked(submit_count)">
           <span ng-if="submit_count == 0">Publish</span>
           <span ng-if="submit_count == 1">Are you sure?</span>
-          <span ng-if="submit_count >= 2">Published!</span>
+          <span ng-if="submit_count >= 2">Publishing...</span>
         </button>
       </div>
     </div>
@@ -21,6 +21,26 @@
         <p class="round-id"><a href="#/round/{{latest_round.id}}">Round {{latest_round.id}}</a></p>
         <p class="time-elapsed"> Started {{elapsed_time}}</p>
       </div>
+      <p>Submissions will be posted <strong>anonymously</strong> by Narrative Roulette to <a href="http://facebook.com/narrativeroulette">Facebook.</a></p>
     </div>
+
+    <!-- Facebook post modal -->
+    <div class="modal fade" id="fb-post-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+            <h3 class="modal-title" id="myModalLabel">Your story is out there!</h3>
+            <p>Your text has been published <strong>anonymously</strong> by Narrative Roulette on Facebook.</p>
+            <p>Like, share or comment to follow it!</p>
+          </div>
+          <div class="modal-body">
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
   </div>
 </div>

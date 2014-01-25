@@ -1,7 +1,8 @@
 var getRandomPerspective,
     getPerspective,
-    postSubmission;
-function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, $timeout, $location) {
+    postSubmission,
+    showFbModal;
+function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, $timeout, $location, $facebook) {
   $scope.perspective;
   $scope.submission = {
     'text' : undefined
@@ -26,8 +27,8 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
     console.log("Submission:", submission);
     $http.post("/api/submission", submission)
       .then(function(response) {
-        console.log(response);
-        $location.path("/round/" + response.data.round_id);
+        $scope.show_fb_post_modal(response.data.fb_post_id);
+        // $location.path("/round/" + response.data.round_id);
       });
   }
 
@@ -90,7 +91,16 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
     );
   }
 
+  $scope.show_fb_post_modal = function(fb_post_id) {
+    var fb_embed_post_id = fb_post_id.split("_")[1];
+    $("#fb-post-modal .modal-body")
+      .html('<fb:post href="https://www.facebook.com/narrativeroulette/posts/' + fb_embed_post_id + '" width="558"></fb:post>');
+    FB.XFBML.parse();
+    $('#fb-post-modal').modal()
+  }
+
   getRandomPerspective = $scope.get_random_perspective;
   getPerspective = $scope.get_perspective;
   postSubmission = $scope.post_submission;
+  showFbModal = $scope.show_fb_post_modal;
 }
