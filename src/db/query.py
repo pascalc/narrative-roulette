@@ -18,3 +18,12 @@ def latest_round():
     .order_by(desc(Round.start_time))\
     .limit(1)\
     .first()
+
+def update_submission_fb_post_id(sub_id, fb_post_id):
+  logging.info("Setting fb_post_id to %s for submission %s" % (fb_post_id, sub_id))
+  result = session.query(Submission)\
+    .filter(Submission.id == sub_id)\
+    .update({'fb_post_id': fb_post_id})
+  session.commit()
+  logging.info("Set fb_post_id to %s for submission %s" % (fb_post_id, sub_id))
+  return result
