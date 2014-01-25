@@ -43,6 +43,7 @@ class Submission(Base, MyMixin):
   text = Column(Text, nullable=False)
   likes = Column(Integer, default=0)
   created_at = Column(DateTime, default=datetime.now)
+  fb_post_id = Column(String(128), nullable=True)
   
   # Round = latest round before created_at with correct perspective_id
   @hybrid_property
