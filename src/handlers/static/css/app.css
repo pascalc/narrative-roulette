@@ -107,6 +107,14 @@ div.write .perspective {
   margin-bottom: 5px;
 }
 
+div.write .modal-title {
+  margin-bottom: 10px;
+}
+
+div.write .modal p {
+ margin-bottom: 5px; 
+}
+
 .perspective.gender span {
   font-weight: bold;
 }
