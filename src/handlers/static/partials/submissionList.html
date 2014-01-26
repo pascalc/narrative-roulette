@@ -39,8 +39,10 @@
       </div>
     </div>
     <div class="col-md-4 col-xs-12">
-      <h4><strong>Round {{round.id}}</strong></h4>
-      <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
+      <div ng-show="round">
+        <h4><strong>Round {{round.id}}</strong></h4>
+        <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
+      </div>
       <p>Click "Like" below to see new submissions in your news feed.</p>
       <fb:like-box href="http://www.facebook.com/narrativeroulette" colorscheme="light" show_faces="true" header="false" stream="false" show_border="false"></fb:like-box>
     </div>

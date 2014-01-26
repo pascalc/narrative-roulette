@@ -1,22 +1,30 @@
 <div class="submission-view">
   <div class="row">
-    <div class="col-md-8">
-      <h4 class="perspective">Imagine this:</h4>
-      <h4 class="perspective gender">You are <span ng-class="submission.perspective.gender">{{submission.perspective.gender}}.</span></h4> 
-      <h4 class="perspective text">{{submission.perspective.text}}</h4>
-    </div>
-    <div class="col-md-4">
-      <div ng-show="submission.round_id">
-        <a href="#/round/{{submission.round_id}}">More from round {{submission.round_id}}.</a>
+    <div class="col-md-8 col-xs-12">
+      <div>
+        <p class="perspective gender">You are <span ng-class="submission.perspective.gender">{{submission.perspective.gender}}.</span></p>
+        <p class="perspective text">{{submission.perspective.text}}</p>
       </div>
-      <a href="#/perspective/{{submission.perspective_id}}">More from this perspective.</a>
-    </div>
-  </div>
-  <div class="row">
-      <div class="col-md-8 col-xs-12">
+      <div class="col-md-12 pull-left pull-right">
         <div class="submission" ng-model="submission.text" contenteditable="false"></div>
-        <p class="submitted-at">Submitted {{submission.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
       </div>
+      <div class="col-xs-12 pull-left pull-right">
+        <div class="fb-share">
+          <fb:like href="http://narrativeroulette.com/#/submission/{{submission.id}}" layout="standard" action="like" show_faces="true" share="true" width="400"></fb:like>
+        </div>
+        <p class="submitted-at">Submitted {{submission.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
+        <div class="pull-left col-xs-12 fb-comments">
+          <fb:comments href="http://narrativeroulette.com/#/submission/{{submission.id}}" width="600" numposts="5" colorscheme="light"></fb:comments>
+        </div>
+      </div>
+    </div>    
+    <div class="col-md-4 col-xs-12">
+      <div ng-show="submission.round_id">
+        <h4><strong>Round {{submission.round_id}}</strong></h4>
+        <p><a href="#/round/{{submission.round_id}}">More from this round.</a></p> 
+      </div>
+      <p>Click "Like" below to see new submissions in your news feed.</p>
+      <fb:like-box href="http://www.facebook.com/narrativeroulette" colorscheme="light" show_faces="true" header="false" stream="false" show_border="false"></fb:like-box>
+    </div>
   </div>
 </div>
-

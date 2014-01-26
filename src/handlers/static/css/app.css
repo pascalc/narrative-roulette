@@ -97,15 +97,15 @@ div.write div.round p {
   margin-bottom: 0px;
 }
 
-div.write .perspective:first-of-type {
+p.perspective:first-of-type {
   margin-top: 20px;
 } 
 
-div.write .perspective:last-of-type {
+p.perspective:last-of-type {
   margin-bottom: 20px;
 } 
 
-div.write .perspective {
+p.perspective {
   font-size: 20px;
   margin-top: 5px;
   margin-bottom: 5px;
@@ -225,7 +225,15 @@ div.submissionList-view h4.perspective {
   font-size: 20px;
 }
 
+div.submission-view h4.perspective {
+  font-size: 20px;
+}
+
 div.submissionList-view > .row {
+  margin-top: 20px;
+}
+
+div.submission-view > .row {
   margin-top: 20px;
 }
 
@@ -238,6 +246,17 @@ div.submissionList-view .perspective {
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+div.submission-view .perspective:last-of-type {
+  margin-bottom: 20px;
+} 
+
+div.submission-view .perspective {
+  font-size: 20px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
 
 div.submissionList-view .controls {
   margin-top: 0px;
@@ -267,17 +286,26 @@ div.submissionList-view div.submission {
   padding-bottom: 20px;
 }
 
+div.submission-view div.submission {
+  padding-bottom: 20px;
+}
+
+div.submission-view .submitted-at {
+  margin-top: 5px;
+  float: right;
+}
+
 div.submissionList-view .submitted-at {
   margin-top: 5px;
   float: right;
 }
 
-div.submissionList-view .fb-share {
+.fb-share {
   margin-top: 5px;
   float: left;
 }
 
-div.submissionList-view .fb-comments {
+.fb-comments {
   margin-top: 20px;
 }
 
