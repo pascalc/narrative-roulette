@@ -87,6 +87,10 @@ nav a {
   color: #105B9C;
 }
 
+div.write {
+  margin-bottom: 40px;
+}
+
 div.write div.round {
   margin-bottom: 5px;
   margin-top: 20px;
