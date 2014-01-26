@@ -12,7 +12,8 @@
         <button class="btn btn-large btn-success" ng-disabled="submission.text.length == 0 || submit_count >= 2" ng-click="submit_clicked(submit_count)">
           <span ng-if="submit_count == 0">Publish</span>
           <span ng-if="submit_count == 1">Are you sure?</span>
-          <span ng-if="submit_count >= 2">Publishing...</span>
+          <span ng-if="submit_count >= 2 && !submission_response">Publishing...</span>
+          <span ng-if="submit_count >= 2 && submission_response">Published!</span>
         </button>
       </div>
     </div>
