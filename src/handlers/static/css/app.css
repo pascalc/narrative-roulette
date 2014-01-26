@@ -221,9 +221,9 @@ div.submissionList-view h4.perspective {
   font-size: 20px;
 }
 
-div.submissionList-view .perspective:first-of-type {
+div.submissionList-view > .row {
   margin-top: 20px;
-} 
+}
 
 div.submissionList-view .perspective:last-of-type {
   margin-bottom: 20px;
@@ -259,8 +259,18 @@ div.submissionList-view ul {
   margin-bottom: 0;
 }
 
-.submitted-at {
-  text-align: right;
+div.submissionList-view div.submission {
+  padding-bottom: 20px;
+}
+
+div.submissionList-view .submitted-at {
+  margin-top: 5px;
+  float: right;
+}
+
+div.submissionList-view .fb-share {
+  margin-top: 5px;
+  float: left;
 }
 
 @media all and (max-width: 600px) {

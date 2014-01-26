@@ -1,38 +1,45 @@
 <div class="submissionList-view" ng-keyup="key_pressed($event)">
   <div class="row">
-    <div class="col-md-12">
-      <h3>Round {{round.id}}</h3>
-      <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
-
-      <h4 class="perspective">Imagine this:</h4>
-      <h4 class="perspective gender">You are <span ng-class="round.perspective.gender">{{round.perspective.gender}}.</span></h4> 
-      <h4 class="perspective text">{{round.perspective.text}}</h4>
-    </div>
-  </div>
-  <div class="row">
-    <div class="submission-viewer col-md-12" ng-show="round.submissions.length > 0">
-      <ul class="col-md-8 col-xs-12">
-        <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
+    <div class="col-md-8 col-xs-12">
+      <div>
+        <p class="perspective gender">You are <span ng-class="round.perspective.gender">{{round.perspective.gender}}.</span></p> 
+        <p class="perspective text">{{round.perspective.text}}</p>
+      </div>
+      <div class="submission-viewer col-md-12 pull-left" ng-show="round.submissions.length > 0">
+        <ul class="col-md-12">
+          <li ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
+            <div class="submission" ng-model="sub.text" contenteditable="false"></div>
+          </li>
+        </ul>
+        <div class="controls pull-left col-md-12">
+          <button class="btn btn-primary previous-sub col-xs-2" 
+            ng-click="show_submission_index = show_submission_index - 1"
+            ng-disabled="show_submission_index == 0">
+            Previous
+          </button>
+          <div class="sub-counter col-xs-8">Submission {{show_submission_index + 1}} of {{round.submissions.length}}</div>
+          <button class="btn btn-primary next-sub col-xs-2" 
+            ng-click="show_submission_index = show_submission_index + 1"
+            ng-disabled="show_submission_index == round.submissions.length - 1">
+            Next
+          </button>
+        </div>
+        <div ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
+          <div class="fb-share">
+            <fb:share-button href="http://narrativeroulette.com/#/submission/{{sub.id}}" type="button_count"></fb:share-button>
+          </div>
           <p class="submitted-at">Submitted {{sub.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
-          <div class="submission" ng-model="sub.text" contenteditable="false"></div>
-        </li>
-      </ul>
-      <div class="controls pull-left col-md-8 col-xs-12">
-        <button class="btn btn-primary previous-sub col-xs-2" 
-          ng-click="show_submission_index = show_submission_index - 1"
-          ng-disabled="show_submission_index == 0">
-          Previous
-        </button>
-        <div class="sub-counter col-xs-8">Submission {{show_submission_index + 1}} of {{round.submissions.length}}</div>
-        <button class="btn btn-primary next-sub col-xs-2" 
-          ng-click="show_submission_index = show_submission_index + 1"
-          ng-disabled="show_submission_index == round.submissions.length - 1">
-          Next
-        </button>
+        </div>
+      </div>
+      <div class="col-md-12 pull-left" ng-show="round.submissions.length == 0">
+        No submissions for this round.
       </div>
     </div>
-    <div class="col-md-12" ng-show="round.submissions.length == 0">
-      No submissions for this round.
+    <div class="col-md-4 col-xs-12">
+      <h4><strong>Round {{round.id}}</strong></h4>
+      <p class="round-start">Started {{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
+      <p>Click "Like" below to see new submissions in your news feed.</p>
+      <fb:like-box href="http://www.facebook.com/narrativeroulette" colorscheme="light" show_faces="true" header="false" stream="false" show_border="false"></fb:like-box>
     </div>
   </div>
 </div>
