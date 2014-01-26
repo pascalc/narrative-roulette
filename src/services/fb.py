@@ -1,4 +1,5 @@
 import logging
+import urllib
 
 import config
 import facebook
@@ -24,6 +25,9 @@ def fb_perspective_text(perspective):
   return u"Imagine this: You are {gender}. {text} What's going through your head?\n ---\n\n"\
     .format(gender=gender, text=text)
 
+def encode_params(obj):
+  return dict([k, v.encode('utf-8')] for k, v in obj.items())
+
 def post_submission(sub):
   logging.info("Posting submission %s to Facebook" % sub['id'])
   sub_body = get_submission_text(sub['text'])
@@ -36,6 +40,7 @@ def post_submission(sub):
     'caption': u"Who will you be?",
     'description': u"Write an anonymous narrative from a perspective radically different from your own. See the world through another pair of eyes and the effect might last longer than the time you spend on the page.",
   }
+  fb_obj = encode_params(fb_obj)
   logging.info("FB post object:\n %s " % fb_obj)
   response = post_object_to_page(fb_obj)
   logging.info("Posted submission %s to Facebook" % sub['id'])
