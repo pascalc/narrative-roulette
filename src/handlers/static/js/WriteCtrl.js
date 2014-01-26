@@ -53,6 +53,7 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
   }
 
   angular.element(document).ready(function () {
+    FB.XFBML.parse();
     var perspective_id = $routeParams.perspectiveId;
     if (perspective_id) {
       $scope.get_perspective(perspective_id)
