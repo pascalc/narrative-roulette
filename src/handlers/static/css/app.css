@@ -273,6 +273,10 @@ div.submissionList-view .fb-share {
   float: left;
 }
 
+div.submissionList-view .fb-comments {
+  margin-top: 20px;
+}
+
 @media all and (max-width: 600px) {
   h1 {
     font-size: 32px;
