@@ -25,6 +25,10 @@ app.config(['$routeProvider',
         templateUrl: 'partials/submissionList.html',
         controller: 'SubmissionListCtrl'
       }).
+      when('/read', {
+        templateUrl: 'partials/submissionList.html',
+        controller: 'SubmissionListCtrl'
+      }).
       when('/submissions', {
         templateUrl: 'partials/submissions.html',
         controller: 'SubmissionsCtrl'

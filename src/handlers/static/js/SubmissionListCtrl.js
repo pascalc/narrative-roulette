@@ -17,6 +17,14 @@ function SubmissionListCtrl($scope, $routeParams, $http) {
   }
 
   angular.element(document).ready(function () {
-    $scope.get_round($routeParams.roundId);
+    var round_id;
+    if ($routeParams.roundId) {
+      round_id = $routeParams.roundId;
+      $scope.get_round(round_id);
+    } else {
+      $http.get("/api/round/latest").then(function(response) {
+        $scope.round = response.data;
+      });
+    }
   });
 }
