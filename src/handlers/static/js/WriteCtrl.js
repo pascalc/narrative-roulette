@@ -53,7 +53,6 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
   }
 
   angular.element(document).ready(function () {
-    FB.XFBML.parse();
     var perspective_id = $routeParams.perspectiveId;
     if (perspective_id) {
       $scope.get_perspective(perspective_id)
@@ -64,6 +63,9 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
           .then(loadSavedText);
         $interval($scope.update_elapsed_time, 1000);
       });
+    }
+    if (typeof FB !== 'undefined') {
+      FB.XFBML.parse();  
     }
   });
 

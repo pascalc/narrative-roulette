@@ -1,9 +1,10 @@
-function SubmissionListCtrl($scope, $routeParams, $http) {
+function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
   $scope.round;
   $scope.show_submission_index = 0;
   $scope.get_round = function(round_id) {
     $http.get("/api/round/" + round_id).then(function(response) {
       $scope.round = response.data;
+      $timeout(FB.XFBML.parse, 100);
     });
   }
 
@@ -24,7 +25,11 @@ function SubmissionListCtrl($scope, $routeParams, $http) {
     } else {
       $http.get("/api/round/latest").then(function(response) {
         $scope.round = response.data;
+        $timeout(FB.XFBML.parse, 100);
       });
+    }
+    if (typeof FB !== 'undefined') {
+      FB.XFBML.parse();  
     }
   });
 }
