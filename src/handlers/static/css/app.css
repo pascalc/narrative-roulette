@@ -5,6 +5,10 @@
   padding-left: 0px;
 }
 
+.pull-right {
+  padding-right: 0px;
+}
+
 .btn {
   border-radius: 0px;
 }
@@ -137,7 +141,7 @@ div.submission {
   font-size: 16px;
   font-family: 'Montserrat', serif;
   min-height: 250px;
-  line-height: 20px;
+  line-height: 21px;
 }
 
 div.write .buttons {
