@@ -27,6 +27,7 @@ class Perspective(Base, MyMixin):
   id = Column(Integer, primary_key=True)
   gender = Column(String(6), nullable=False)
   text = Column(Text, nullable=False)
+  social_text = Column(Text, nullable=True)
   created_at = Column(DateTime, default=datetime.now)
   submissions = orm.relationship('Submission', backref='perspective',
                                 lazy='dynamic')

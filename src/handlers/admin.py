@@ -25,7 +25,8 @@ class RoundModelView(ModelView):
 class PerspectiveModelView(ModelView):
   form_columns = \
     ('gender', 
-     'text')
+     'text',
+     'social_text',)
 
   column_list = ('id', 'gender', 'text', 'created_at')
 
