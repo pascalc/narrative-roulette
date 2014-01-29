@@ -21,9 +21,9 @@ def get_submission_text(html):
 
 def fb_perspective_text(perspective):
   gender = perspective['gender']
-  text = perspective['text'].replace("\n", "");
-  return u"Imagine this: You are {gender}. {text} What's going through your head?\n ---\n\n"\
-    .format(gender=gender, text=text)
+  social_text = perspective['social_text']
+  return u"I am a {gender} {social_text}\n ---\n\n"\
+    .format(gender=gender, social_text=social_text)
 
 def encode_params(obj):
   return dict([k, v.encode('utf-8')] for k, v in obj.items())
