@@ -29,7 +29,7 @@ def encode_params(obj):
   return dict([k, v.encode('utf-8')] for k, v in obj.items())
 
 def post_submission(sub):
-  logging.info("Posting submission %s to Facebook" % sub['id'])
+  logging.info("Posting submission %s to Facebook" % sub)
   sub_body = get_submission_text(sub['text'])
   logging.info("Submission body for FB:\n %s " % sub_body)
   fb_obj = {
