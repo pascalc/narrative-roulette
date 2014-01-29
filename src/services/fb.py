@@ -34,7 +34,7 @@ def post_submission(sub):
   logging.info("Submission body for FB:\n %s " % sub_body)
   fb_obj = {
     'message': fb_perspective_text(sub['perspective']) + sub_body,
-    'link': u"http://narrativeroulette.com#/submission/%s" % sub['id'],
+    'link': u"http://narrativeroulette.com/submission/%s" % sub['id'],
     'picture': u"http://narrativeroulette.com/img/typewriter_fb.jpg",
     'name': u'Play Narrative Roulette',
     'caption': u"Who will you be?",
