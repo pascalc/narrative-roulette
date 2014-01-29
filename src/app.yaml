@@ -9,6 +9,8 @@ default_expiration: "0s"
 handlers:
 - url: /api/.*
   script: main.app
+- url: /submission/.*
+  script: main.app
 - url: /admin.*
   script: main.app
   login: admin

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns:fb="http://ogp.me/ns/fb#">
+  <head>
+    <title>Narrative Roulette</title>
+    <meta name="viewport" content="width=device-width; initial-scale=1.0; maximum-scale=1.0; user-scalable=no;"/>
+    <!-- Bootstrap -->
+    <link href="/css/bootstrap.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+    <!-- Facebook OG meta tags -->
+    <meta property="og:title" content="Narrative Roulette" /> 
+    <meta property="og:image" content="http://narrativeroulette.com/img/typewriter_fb.jpg" /> 
+    <meta property="og:description" content="Write an anonymous narrative from a perspective radically different from your own. See the world through another pair of eyes and the effect might last longer than the time you spend on the page." /> 
+    <meta property="og:url" content="http://narrativeroulette.com/submission/{{ submission.id }}">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+  </head>
+  <body>
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+     <script>
+      window.fbAsyncInit = function() {
+        FB.init({
+          appId      : '629563240412158',
+          status     : true,
+          xfbml      : true
+        });
+      };
+
+      (function(d, s, id){
+         var js, fjs = d.getElementsByTagName(s)[0];
+         if (d.getElementById(id)) {return;}
+         js = d.createElement(s); js.id = id;
+         js.src = "//connect.facebook.net/en_US/all.js";
+         fjs.parentNode.insertBefore(js, fjs);
+       }(document, 'script', 'facebook-jssdk'));
+    </script>
+    <header class="cover">
+      <div class="image-darken"></div>
+      <div class="container">
+        <a href="/#/"><h1 class="shadow">Narrative Roulette</h1></a>
+        <h2 class="shadow">Who will you be?</h2>
+      </div>
+    </header>
+    <nav class="cover">
+      <div class="container">
+        <a href="/#/write">Write</a>
+        <!-- <a href="#/display">Roulette</a> -->
+        <a href="/#/read">Read</a>
+      </div>
+    </nav>
+    <div class="container">
+      <div class="submission-view">
+        <div class="row">
+          <div class="col-md-8 col-xs-12">
+            <div>
+              <p class="perspective gender">You are <span>{{ submission.perspective.gender }}.</span></p>
+              <p class="perspective text">{{ submission.perspective.text }}</p>
+            </div>
+            <div class="col-md-12 pull-left pull-right">
+              <div class="submission">
+                {{ submission.text|safe }}
+              </div>
+            </div>
+            <div class="col-xs-12 pull-left pull-right">
+              <div class="fb-share">
+                <fb:like href="http://narrativeroulette.com/submission/{{ submission.id }}" layout="standard" action="like" show_faces="true" share="true" width="400"></fb:like>
+              </div>
+              <p class="submitted-at">Submitted {{ submission.created_at }}</p>
+              <div class="pull-left col-xs-12 fb-comments">
+                <fb:comments href="http://narrativeroulette.com/submission/{{ submission.id }}" width="600" numposts="5" colorscheme="light"></fb:comments>
+              </div>
+            </div>
+          </div>    
+          <div class="col-md-4 col-xs-12">
+            <div>
+              <h4><strong>Round {{ submission.round_id }}</strong></h4>
+              <p><a href="/#/round/{{ submission.round_id }}">More from this round.</a></p> 
+            </div>
+            <p>Click "Like" below to see new submissions in your news feed.</p>
+            <fb:like-box href="http://www.facebook.com/narrativeroulette" colorscheme="light" show_faces="true" header="false" stream="false" show_border="false"></fb:like-box>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Google Analytics -->
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-47427187-1', 'narrativeroulette.com');
+      ga('send', 'pageview');
+
+    </script>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/js/lib/jquery.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/js/lib/bootstrap.js"></script>
+    <!-- moment.js -->
+    <script src="/js/lib/moment.js"></script>
+    <script src="/js/lib/moment-timezone.js"></script>
+    <script src="/js/lib/moment-timezone-data.js"></script>
+  </body>
+</html>
