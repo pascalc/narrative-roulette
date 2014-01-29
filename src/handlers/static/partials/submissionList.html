@@ -26,7 +26,7 @@
         </div>
         <div class="col-xs-12 pull-left pull-right" ng-repeat="sub in round.submissions" ng-show="$index == show_submission_index">
           <div class="fb-share">
-            <fb:like href="http://narrativeroulette.com/submission/{{sub.id}}" layout="standard" action="like" show_faces="true" share="true" width="400"></fb:like>
+            <fb:like href="http://narrativeroulette.com/submission/{{sub.id}}" layout="standard" action="recommend" show_faces="true" share="true" width="400"></fb:like>
           </div>
           <p class="submitted-at">Submitted {{sub.created_at | date:'EEEE MMMM d y HH:mm Z'}}</p>
           <div class="pull-left col-xs-12 fb-comments">

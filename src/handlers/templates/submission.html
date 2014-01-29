@@ -7,9 +7,14 @@
     <link href="/css/bootstrap.css" rel="stylesheet">
     <link href="/css/app.css" rel="stylesheet">
     <!-- Facebook OG meta tags -->
-    <meta property="og:title" content="Narrative Roulette" /> 
+    <meta property="og:title" content="Submission {{ submission.id }}" /> 
+    <meta property="og:site_name" content="Narrative Roulette" />
+    <meta property="fb:app_id" content="629563240412158" /> 
+    <meta property="og:type" content="article" /> 
+    <meta property="article:author" content="http://facebook.com/narrativeroulette" /> 
+    <meta property="article:publisher" content="http://facebook.com/narrativeroulette" /> 
     <meta property="og:image" content="http://narrativeroulette.com/img/typewriter_fb.jpg" /> 
-    <meta property="og:description" content="Write an anonymous narrative from a perspective radically different from your own. See the world through another pair of eyes and the effect might last longer than the time you spend on the page." /> 
+    <meta property="og:description" content="{{ submission.text|striptags|truncate }}" /> 
     <meta property="og:url" content="http://narrativeroulette.com/submission/{{ submission.id }}">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -68,7 +73,7 @@
             </div>
             <div class="col-xs-12 pull-left pull-right">
               <div class="fb-share">
-                <fb:like href="http://narrativeroulette.com/submission/{{ submission.id }}" layout="standard" action="like" show_faces="true" share="true" width="400"></fb:like>
+                <fb:like href="http://narrativeroulette.com/submission/{{ submission.id }}" layout="standard" action="recommend" show_faces="true" share="true" width="400"></fb:like>
               </div>
               <p class="submitted-at">Submitted {{ submission.created_at }}</p>
               <div class="pull-left col-xs-12 fb-comments">
