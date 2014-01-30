@@ -9,16 +9,19 @@
     <link href="css/app.css" rel="stylesheet">
     <!-- Facebook OG meta tags -->
     <meta property="og:title" content="Narrative Roulette" /> 
+    <meta property="og:site_name" content="Narrative Roulette" />
+    <meta property="fb:app_id" content="629563240412158" /> 
     <meta property="og:image" content="http://narrativeroulette.com/img/typewriter_fb.jpg" /> 
     <meta property="og:description" content="Write an anonymous narrative from a perspective radically different from your own. See the world through another pair of eyes and the effect might last longer than the time you spend on the page." /> 
     <meta property="og:url" content="http://narrativeroulette.com">
-
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
       <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
+    <!-- Data injected from the server -->
+    <div id="latest-round-data" data-latest-round='{{ latest_round|tojson|safe }}'></div>
   </head>
   <body>
     <header class="cover">

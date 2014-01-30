@@ -16,7 +16,14 @@ def redirect(target, **kwargs):
 
 @app.route('/')
 def index():
-  return app.send_static_file('index.html')
+  latest_round = q.latest_round()
+  latest_perspective = latest_round.perspective.to_dict()
+  latest_submissions = latest_round.submissions
+  
+  info = latest_round.to_dict()
+  info['perspective'] = latest_perspective
+  info['submissions'] = latest_submissions
+  return render_template("index.html", latest_round=info)
 
 # Redirect based on ORIGIN header
 

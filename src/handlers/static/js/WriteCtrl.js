@@ -42,9 +42,10 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
 
   $scope.latest_round;
   $scope.get_latest_round = function() {
-    return $http.get("/api/round/latest").then(function(response) {
-      $scope.latest_round = response.data;
-    });
+    // return $http.get("/api/round/latest").then(function(response) {
+    //   $scope.latest_round = response.data;
+    // });
+    $scope.latest_round = $("#latest-round-data").data("latest-round");
   }
 
   $scope.elapsed_time;
@@ -58,11 +59,10 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
       $scope.get_perspective(perspective_id)
         .then(loadSavedText);
     } else {
-      $scope.get_latest_round().then(function(response) {      
-        $scope.get_perspective($scope.latest_round.perspective.id)
-          .then(loadSavedText);
+        $scope.get_latest_round()
+        $scope.perspective = $scope.latest_round.perspective;
+        loadSavedText();
         $interval($scope.update_elapsed_time, 1000);
-      });
     }
     if (typeof FB !== 'undefined') {
       FB.XFBML.parse();  

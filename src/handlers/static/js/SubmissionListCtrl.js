@@ -23,10 +23,11 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
       round_id = $routeParams.roundId;
       $scope.get_round(round_id);
     } else {
-      $http.get("/api/round/latest").then(function(response) {
-        $scope.round = response.data;
-        $timeout(FB.XFBML.parse, 100);
-      });
+      // $http.get("/api/round/latest").then(function(response) {
+      //   $scope.round = response.data;
+      //   $timeout(FB.XFBML.parse, 100);
+      // });
+      $scope.round = $("#latest-round-data").data("latest-round");
     }
     if (typeof FB !== 'undefined') {
       FB.XFBML.parse();  
