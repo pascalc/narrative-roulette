@@ -38,7 +38,6 @@ def post_submission(sub):
     'picture': u"http://narrativeroulette.com/img/typewriter_fb.jpg",
     'name': u'Play Narrative Roulette',
     'caption': u"Who will you be?",
-    'published': "true",
     'description': u"Write an anonymous narrative from a perspective radically different from your own. See the world through another pair of eyes and the effect might last longer than the time you spend on the page.",
   }
   fb_obj = encode_params(fb_obj)
