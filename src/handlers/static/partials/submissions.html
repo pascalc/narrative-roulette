@@ -1,5 +1,5 @@
 <div class="row rounds">
-  <div class="current-round col-md-12">
+  <!-- <div class="current-round col-md-12">
     <h3>Round {{rounds[0].id}}</h3>
     <p class="round-start">{{rounds[0].start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
     <h4 class="perspective gender">You are <span ng-class="rounds[0].perspective.gender">{{rounds[0].perspective.gender}}</span>.</h4> 
@@ -9,15 +9,17 @@
 
   <div class="col-md-12">
     <hr/>
-  </div>
+  </div> -->
 
   <div class="past-rounds col-md-12">
     <div class="past-round" ng-repeat="round in rounds.slice(1)">
-      <h4 class="old-round-id">Round {{round.id}}</h4>
-      <p class="round-start">{{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
-      <p class="perspective gender">You are <span ng-class="round.perspective.gender">{{round.perspective.gender}}</span>.</p> 
-      <p class="perspective text">{{round.perspective.text}}</p>  
-      <a href="#/round/{{round.id}}"><p class="submission-length">{{round.submissions.length}} submissions</p></a>
+      <div ng-if="round.submissions.length > 0">
+        <h4 class="old-round-id">Round {{round.id}}</h4>
+        <p class="round-start">{{round.start_time | date:'EEEE MMMM d y HH:mm Z'}}</p>
+        <p class="perspective gender">You are <span ng-class="round.perspective.gender">{{round.perspective.gender}}</span>.</p> 
+        <p class="perspective text">{{round.perspective.text}}</p>  
+        <a href="#/round/{{round.id}}"><p class="submission-length">{{round.submissions.length}} submissions</p></a>
+      </div>
     </div>
   </div>
 </div>
