@@ -1,0 +1,4 @@
+cron:
+- description: ping index
+  url: /
+  schedule: every 5 minutes
