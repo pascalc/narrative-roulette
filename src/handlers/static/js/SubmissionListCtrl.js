@@ -17,6 +17,12 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
     }
   }
 
+  function parseXFBML() {
+    if (typeof FB !== 'undefined') {
+      FB.XFBML.parse();  
+    }
+  }
+
   angular.element(document).ready(function () {
     var round_id;
     if ($routeParams.roundId) {
@@ -28,9 +34,8 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
       //   $timeout(FB.XFBML.parse, 100);
       // });
       $scope.round = $("#latest-round-data").data("latest-round");
+      $timeout(parseXFBML, 100);
     }
-    if (typeof FB !== 'undefined') {
-      FB.XFBML.parse();  
-    }
+    parseXFBML();
   });
 }
