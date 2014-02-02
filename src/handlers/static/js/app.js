@@ -29,7 +29,7 @@ app.config(['$routeProvider',
         templateUrl: 'partials/submissionList.html',
         controller: 'SubmissionListCtrl'
       }).
-      when('/submissions', {
+      when('/rounds', {
         templateUrl: 'partials/submissions.html',
         controller: 'SubmissionsCtrl'
       }).
