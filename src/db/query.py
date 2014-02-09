@@ -15,6 +15,7 @@ def random_perspective():
 
 def latest_round():
   return session.query(Round)\
+    .filter(Round.start_time <= datetime.utcnow())\
     .order_by(desc(Round.start_time))\
     .limit(1)\
     .first()
