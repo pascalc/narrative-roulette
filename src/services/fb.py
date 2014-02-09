@@ -1,5 +1,6 @@
 import logging
 import urllib
+import re
 
 import config
 import facebook
@@ -17,7 +18,10 @@ def get_submission_text(html):
   parsed = BS(html)
   for br in parsed.findAll("br"):
     br.replaceWith("\n\n")
-  return parsed.get_text()
+  text = parsed.get_text()
+  # Max 2 \n's to indicate new paragraph 
+  normalized = re.sub("(\\n){3,}", "\n\n", text)
+  return normalized
 
 def fb_perspective_text(perspective):
   gender = perspective['gender']
