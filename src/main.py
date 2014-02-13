@@ -17,7 +17,7 @@ app.debug
 
 container = tornado.wsgi.WSGIContainer(app)
 application = tornado.web.Application([
-  (r"/ws", WSHandler),
+  # (r"/ws", WSHandler),
   (r".*", tornado.web.FallbackHandler, dict(fallback=container)),
 ], debug=True)
 
