@@ -14,9 +14,20 @@ def redirect(target, **kwargs):
     url = referer + target[1:]
   return flask.redirect(url)
 
+@app.before_request
+def open_session():
+  logging.info("Opening session")
+  flask.g.session = Session()
+
+@app.after_request
+def close_session(response):
+  logging.info("Closing session")
+  flask.g.session.close()
+  return response
+
 @app.route('/')
 def index():
-  latest_round = q.latest_round()
+  latest_round = q.latest_round(session=flask.g.session)
   latest_perspective = latest_round.perspective.to_dict()
   latest_submissions = latest_round.submissions
   
@@ -29,16 +40,16 @@ def index():
 
 @app.route('/api/perspective/random')
 def random_perspective():
-  random_id = q.random_perspective().id
+  random_id = q.random_perspective(session=flask.g.session).id
   return redirect('/api/perspective/%s' % random_id)
 
 @app.route('/api/round/latest')
 def latest_round():
-  round_id = q.latest_round().id
+  round_id = q.latest_round(session=flask.g.session).id
   return redirect("/api/round/%s" % round_id)
 
 @app.route('/submission/<int:submission_id>')
 def serverside_submission(submission_id=None):
   logging.info("Rendering submission server-side")
-  sub = session.query(Submission).filter(Submission.id == submission_id)[0]
+  sub = flask.g.session.query(Submission).filter(Submission.id == submission_id)[0]
   return render_template("submission.html", submission=sub)
