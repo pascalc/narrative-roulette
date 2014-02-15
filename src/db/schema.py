@@ -53,13 +53,16 @@ class Submission(Base, MyMixin):
   def round_id(self):
     session = new_session()
     try:
-      return session.query(Round)\
+      result = session.query(Round)\
         .filter(Round.start_time < self.created_at)\
         .filter(Round.perspective_id == self.perspective_id)\
         .order_by(desc(Round.start_time))\
         .first()\
         .id
+      session.close()
+      return result
     except AttributeError:
+      session.close()
       return None
 
   def __repr__(self):
@@ -84,6 +87,7 @@ class Round(Base, MyMixin):
     if later_round:
       subs = subs.filter(Submission.created_at < later_round.start_time)
     subs = subs.filter(Submission.perspective_id == self.perspective_id).all()
+    session.close()
     return [s.to_dict() for s in subs]
 
   def __repr__(self):
