@@ -14,7 +14,9 @@ Base = declarative_base()
 Base.metadata.bind = db.engine
 
 Session = orm.sessionmaker(bind=db.engine)
-session = orm.scoped_session(Session)
+def new_session():
+  return orm.scoped_session(Session)
+session = new_session()
 
 class MyMixin(object):
   def to_dict(self):
@@ -49,6 +51,7 @@ class Submission(Base, MyMixin):
   # Round = latest round before created_at with correct perspective_id
   @hybrid_property
   def round_id(self):
+    session = new_session()
     try:
       return session.query(Round)\
         .filter(Round.start_time < self.created_at)\
@@ -70,6 +73,7 @@ class Round(Base, MyMixin):
 
   @hybrid_property
   def submissions(self):
+    session = new_session()
     later_round = session.query(Round)\
       .filter(Round.start_time > self.start_time)\
       .filter(Round.perspective_id == self.perspective_id)\

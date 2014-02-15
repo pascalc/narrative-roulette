@@ -17,7 +17,7 @@ def redirect(target, **kwargs):
 @app.before_request
 def open_session():
   logging.info("Opening session")
-  flask.g.session = Session()
+  flask.g.session = new_session()
 
 @app.after_request
 def close_session(response):
