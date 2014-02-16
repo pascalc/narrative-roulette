@@ -38,6 +38,7 @@
         <a href="#/read">Read</a>
       </div>
     </nav>
+    <div id="ie-banner" class="alert alert-danger"><div class="container">This website doesn't work in Internet Explorer. Use <a href="https://www.google.com/chrome">Google Chrome</a> instead.</div></div>
     <!-- Facebook SDK -->
     <div id="fb-root"></div>
     <div class="container">
@@ -75,5 +76,14 @@
     <script src="js/SubmissionListCtrl.js"></script>
     <script src="js/SubmissionsCtrl.js"></script>
     <script src="js/SubmissionCtrl.js"></script>
+    <!-- Other JS -->
+    <script src="js/lib/bowser.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        if (bowser.msie) {
+          $("#ie-banner").show();
+        }
+      });
+    </script>
   </body>
 </html>

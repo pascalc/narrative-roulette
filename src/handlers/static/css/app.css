@@ -322,3 +322,7 @@ div.submissionList-view .submitted-at {
     display: none;
   }
 }
+
+#ie-banner {
+  display: none;
+}
