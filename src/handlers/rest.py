@@ -39,7 +39,4 @@ def post_submission_postprocessor(result=None, **kw):
 # default. Allowed HTTP methods can be specified as well.
 manager.create_api(schema.Round, methods=["GET"])
 manager.create_api(schema.Perspective, methods=["GET"])
-manager.create_api(schema.Submission, methods=["GET", "POST", "PUT"],
-  postprocessors={
-    'POST': [post_submission_postprocessor]
-  })
+manager.create_api(schema.Submission, methods=["GET", "POST"])

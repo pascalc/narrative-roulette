@@ -28,8 +28,13 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
     console.log("Submission:", submission);
     $http.post("/api/submission", submission)
       .then(function(response) {
-        $scope.show_fb_post_modal(response.data.fb_post_id); 
-        $scope.submission_response = response.data;
+        // $scope.show_fb_post_modal(response.data.fb_post_id); 
+        // $scope.submission_response = response.data;
+        if ($scope.submission_response.round_id) {
+          $location.path("/round/" + $scope.submission_response.round_id);
+        } else {
+          $location.path("/submission/" + $scope.submission_response.id);
+        }
       });
   }
 
