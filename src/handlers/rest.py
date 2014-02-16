@@ -21,14 +21,18 @@ def post_submission_postprocessor(result=None, **kw):
   """Accepts a single argument, `result`, which is the dictionary
   representation of the created instance of the model.
   """
+  session = schema.new_session()
   submission = result
   logging.info("Entered POST submission %s postprocessor" % submission['id'])
+  
   # Post submission to Facebook
   fb_response = fb.post_submission(submission)
   # Insert fb_post_id into Database
-  query.update_submission_fb_post_id(submission['id'], fb_response['id'])
+  query.update_submission_fb_post_id(submission['id'], fb_response['id'], session=session)
+  session.close()
   # Insert fb_post_id into outgoing result
   result['fb_post_id'] = fb_response['id']
+
   logging.info("Finished POST submission %s postprocessor" % submission['id'])
 
 # Create API endpoints, which will be available at /api/<tablename> by
