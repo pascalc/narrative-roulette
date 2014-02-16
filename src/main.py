@@ -12,6 +12,8 @@ import tornado.ioloop
 import tornado.web
 from tornado.log import enable_pretty_logging
 
+import config
+
 app.debug
 # app.run(port=5000)
 
@@ -22,6 +24,6 @@ application = tornado.web.Application([
 ], debug=True)
 
 if __name__ == "__main__":
-  application.listen(5001)
+  application.listen(config.port)
   enable_pretty_logging()
   tornado.ioloop.IOLoop.instance().start()
