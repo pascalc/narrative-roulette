@@ -28,6 +28,7 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
     console.log("Submission:", submission);
     $http.post("/api/submission", submission)
       .then(function(response) {
+        mixpanel.track("Published");
         // $scope.show_fb_post_modal(response.data.fb_post_id); 
         // $scope.submission_response = response.data;
         if (response.data.round_id) {
