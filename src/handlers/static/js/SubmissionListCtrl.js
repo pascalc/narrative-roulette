@@ -10,13 +10,15 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
   }
 
   $scope.log_submission_view = function() {
-    var sub_id = $scope.round.submissions[$scope.show_submission_index].id;
-    mixpanel.track(
-      "View submission " + sub_id, 
-      {
-        'submission_id' : sub_id
-      }
-    )
+    if ($scope.round.submissions) {
+      var sub_id = $scope.round.submissions[$scope.show_submission_index].id;
+      mixpanel.track(
+        "View submission " + sub_id, 
+        {
+          'submission_id' : sub_id
+        }
+      )
+    }
   }
 
   $scope.key_pressed = function(event) {
