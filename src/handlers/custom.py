@@ -16,17 +16,13 @@ def redirect(target, **kwargs):
 
 @app.before_request
 def open_session():
-  if 'session' in flask.g:
-    logging.info("Closing previous session")
-    flask.g.session.close()
   logging.info("Opening session")
   flask.g.session = new_session()
 
-@app.after_request
-def close_session(response):
+@app.teardown_appcontext
+def close_session(exception):
   logging.info("Closing session")
   flask.g.session.close()
-  return response
 
 @app.route('/')
 def index():
