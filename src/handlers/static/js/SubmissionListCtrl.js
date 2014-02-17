@@ -5,7 +5,18 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
     $http.get("/api/round/" + round_id).then(function(response) {
       $scope.round = response.data;
       $timeout(FB.XFBML.parse, 100);
+      $scope.log_submission_view();
     });
+  }
+
+  $scope.log_submission_view = function() {
+    var sub_id = $scope.round.submissions[$scope.show_submission_index].id;
+    mixpanel.track(
+      "View submission " + sub_id, 
+      {
+        'submission_id' : sub_id
+      }
+    )
   }
 
   $scope.key_pressed = function(event) {
@@ -35,6 +46,7 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
       // });
       $scope.round = $("#latest-round-data").data("latest-round");
       $timeout(parseXFBML, 100);
+      $scope.log_submission_view();
     }
     parseXFBML();
   });

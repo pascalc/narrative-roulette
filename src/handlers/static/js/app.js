@@ -4,6 +4,9 @@ var app = angular.module('NarrativeRoulette', [
   'LocalStorageModule',
   'ngProgress',
   'ngFacebook',
+  'angulartics', 
+  'angulartics.google.analytics',
+  'angulartics.mixpanel',
 ]);
  
 app.config(['$routeProvider',
@@ -49,7 +52,19 @@ app.config(['$routeProvider',
   .config( function( $facebookProvider ) {
     $facebookProvider.setAppId('629563240412158');
     console.log("Set Facebook AppID");
-  });
+  })
+  .config(['$analyticsProvider', function ($analyticsProvider) {
+    $analyticsProvider.registerPageTrack(function (path) {
+      mixpanel.track(path, {'page name' : path, 'url' : window.location.pathname});
+      ga('send', 'pageview', {
+        'page': path,
+        'title': path
+      });
+    });
+    $analyticsProvider.registerEventTrack(function (action, properties) {
+      mixpanel.track(action, properties); 
+    });
+  }]);
 
 app.run( function( $rootScope ) {
   // Cut and paste the "Load the SDK" code from the facebook javascript sdk page.
