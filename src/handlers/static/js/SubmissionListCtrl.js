@@ -10,7 +10,7 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
   }
 
   $scope.log_submission_view = function() {
-    if ($scope.round.submissions) {
+    if ($scope.round.submissions.length > 0) {
       var sub_id = $scope.round.submissions[$scope.show_submission_index].id;
       mixpanel.track(
         "View submission " + sub_id, 
