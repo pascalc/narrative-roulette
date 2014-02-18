@@ -16,9 +16,6 @@ def redirect(target, **kwargs):
 
 @app.before_request
 def open_session():
-  if 'session' in flask.g:
-    logging.info("Closing open session")
-    flask.g.session.close()  
   logging.info("Opening session")
   flask.g.session = new_session()
 
