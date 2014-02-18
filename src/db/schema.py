@@ -52,6 +52,7 @@ class Submission(Base, MyMixin):
   @hybrid_property
   def round_id(self):
     session = new_session()
+    result = None
     try:
       result = session.query(Round)\
         .filter(Round.start_time < self.created_at)\
@@ -59,11 +60,11 @@ class Submission(Base, MyMixin):
         .order_by(desc(Round.start_time))\
         .first()\
         .id
-      session.close()
-      return result
     except AttributeError:
+      result = None
+    finally:
       session.close()
-      return None
+    return result
 
   def __repr__(self):
     return "Submission %s" % self.id
