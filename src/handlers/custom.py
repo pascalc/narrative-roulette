@@ -5,6 +5,7 @@ from flask import request, url_for, render_template
 
 from handlers import app
 import db.query as q
+import db.schema
 from db.schema import *
 
 def redirect(target, **kwargs):
@@ -16,13 +17,22 @@ def redirect(target, **kwargs):
 
 @app.before_request
 def open_session():
-  logging.info("Opening session")
+  logging.info("Opening sessions")
   flask.g.session = new_session()
+  db.schema.session = new_session()
 
-@app.teardown_appcontext
-def close_session(exception):
-  logging.info("Closing session")
+@app.teardown_request
+def close_session(response):
+  logging.info("Closing sessions")
   flask.g.session.close()
+  db.schema.session.close()
+  return response
+
+# def refresh_session(error):
+#   logging.error(error)
+#   db.schema.session = new_session()
+#   flask.abort(500)
+# app.error_handler_spec[None][500] = refresh_session
 
 @app.route('/')
 def index():
