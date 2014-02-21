@@ -28,11 +28,12 @@ def close_session(response):
   db.schema.session.close()
   return response
 
-# def refresh_session(error):
-#   logging.error(error)
-#   db.schema.session = new_session()
-#   flask.abort(500)
-# app.error_handler_spec[None][500] = refresh_session
+@app.errorhandler(500)
+def rollback_session(error):
+  logging.info("Rolling back sessions")
+  flask.g.session.rollback()
+  db.schema.session.rollback()
+  flask.abort(500)
 
 @app.route('/')
 def index():
