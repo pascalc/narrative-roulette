@@ -13,7 +13,7 @@ import db
 Base = declarative_base()
 Base.metadata.bind = db.engine
 
-Session = orm.sessionmaker(bind=db.engine, autocommit=True)
+Session = orm.sessionmaker(bind=db.engine)
 def new_session():
   return orm.scoped_session(Session)
 session = new_session()
