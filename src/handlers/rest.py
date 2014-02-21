@@ -10,11 +10,10 @@ from handlers import app
 import services.fb as fb
 
 # Create the Flask application and the Flask-SQLAlchemy object.
-app.config['DEBUG'] = True
+# app.config['DEBUG'] = True
 app.config['SQLALCHEMY_DATABASE_URI'] = db.connection_string
 
-# Create the Flask-Restless API manager.
-manager = flask.ext.restless.APIManager(app, session=query.session)
+manager = flask.ext.restless.APIManager(app, session=schema.session)
 
 # POST /submission post-processor
 def post_submission_postprocessor(result=None, **kw):

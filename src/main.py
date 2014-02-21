@@ -14,7 +14,7 @@ from tornado.log import enable_pretty_logging
 
 import config
 
-app.debug
+app.debug = False
 # app.run(port=5000)
 
 container = tornado.wsgi.WSGIContainer(app)
