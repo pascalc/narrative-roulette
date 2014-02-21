@@ -42,3 +42,5 @@ Google App Engine
 
 # logging.info("SQLAlchemy connection string: %s" % connection_string)
 engine = sql.create_engine(connection_string, pool_recycle=3600)
+
+import db.reconnect
