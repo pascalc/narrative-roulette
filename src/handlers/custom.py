@@ -30,6 +30,7 @@ def close_session(response):
 
 @app.errorhandler(500)
 def rollback_session(error):
+  logging.error(error)
   logging.info("Rolling back sessions")
   flask.g.session.rollback()
   db.schema.session.rollback()
