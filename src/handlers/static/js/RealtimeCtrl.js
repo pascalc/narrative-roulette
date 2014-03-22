@@ -24,8 +24,8 @@ function subscribe(channel) {
 var readers_key = "readers";
 var writers_key = "writers";
 var realtime_info = {
-  readers: undefined;
-  writers: undefined;
+  readers: undefined,
+  writers: undefined
 };
 function increment(key) {
   return $.get("localhost:7379/INCR/" + prefix(key)).then(function(resp) {
