@@ -8,12 +8,12 @@ function prefix(str) {
   return redis_prefix + ":" + str;
 }
 
-var event_channel = "events"
+var event_channel = "events";
 function publish(channel, obj) {
- return $.get("http://localhost:7379/PUBLISH/" + prefix(channel) + "/" + JSON.stringify(obj)); 
+ return $.get("http://narrativeroulette.com:7379/PUBLISH/" + prefix(channel) + "/" + JSON.stringify(obj)); 
 }
 function subscribe(channel) {
-  var socket = new WebSocket("ws://localhost:7379/.json");
+  var socket = new WebSocket("ws://narrativeroulette.com:7379/.json");
   socket.onopen = function() {
       socket.send(JSON.stringify(["SUBSCRIBE", prefix(channel)]));
       console.log(channel, "opened");
@@ -28,13 +28,13 @@ var realtime_info = {
   writers: undefined
 };
 function increment(key) {
-  return $.get("http://localhost:7379/INCR/" + prefix(key)).then(function(resp) {
+  return $.get("http://narrativeroulette.com:7379/INCR/" + prefix(key)).then(function(resp) {
     publish(event_channel, {event: key, value: resp.INCR});
     realtime_info[key] = resp.INCR;
   });
 }
 function decrement(key) {
-  return $.get("http://localhost:7379/DECR/" + prefix(key)).then(function(resp) {
+  return $.get("http://narrativeroulette.com:7379/DECR/" + prefix(key)).then(function(resp) {
     publish(event_channel, {event: key, value: resp.DECR});
     realtime_info[key] = resp.DECR;
   });
