@@ -20,7 +20,6 @@ app.debug = False
 container = tornado.wsgi.WSGIContainer(app)
 application = tornado.web.Application([
   # (r"/ws", WSHandler),
-  (r'/(.*)', tornado.web.StaticFileHandler, {'path': 'handlers/static'}),
   (r".*", tornado.web.FallbackHandler, dict(fallback=container)),
 ], debug=True)
 
