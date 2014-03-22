@@ -24,8 +24,8 @@ function subscribe(channel) {
   return socket;
 }
 
-function RealtimeCtrl($scope) {
-  $scope.$on('$locationChangeSuccess', function(event) {
+function RealtimeCtrl($scope, $rootScope) {
+  $rootScope.$on('$locationChangeSuccess', function(event) {
     console.log("$locationChangeSuccess", event);
   });
 }
