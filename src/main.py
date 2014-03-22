@@ -20,8 +20,8 @@ app.debug = False
 container = tornado.wsgi.WSGIContainer(app)
 application = tornado.web.Application([
   # (r"/ws", WSHandler),
+  (r'/(.*)', tornado.web.StaticFileHandler, {'path': 'handlers/static'}),
   (r".*", tornado.web.FallbackHandler, dict(fallback=container)),
-  (r'.*', tornado.web.StaticFileHandler, {'path': 'handlers/static'}),
 ], debug=True)
 
 if __name__ == "__main__":
