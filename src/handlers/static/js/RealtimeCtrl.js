@@ -1,11 +1,3 @@
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-
 function contains(str, substr) {
   return str.indexOf(substr) != -1;  
 }
@@ -13,12 +5,12 @@ function contains(str, substr) {
 var redis_prefix = "kg-narrative-roulette";
 
 function prefix(str) {
-  return redis_prefix + str;
+  return redis_prefix + ":" + str;
 }
 
 var event_channel = "events"
 function publish(channel, obj) {
- return $.get("localhost:7379/PUBLISH/" + prefix(channel) + "/" + JSON.stringify(obj)); 
+ return $.get("http://localhost:7379/PUBLISH/" + prefix(channel) + "/" + JSON.stringify(obj)); 
 }
 function subscribe(channel) {
   var socket = new WebSocket("ws://localhost:7379/.json");
@@ -36,13 +28,13 @@ var realtime_info = {
   writers: undefined
 };
 function increment(key) {
-  return $.get("localhost:7379/INCR/" + prefix(key)).then(function(resp) {
+  return $.get("http://localhost:7379/INCR/" + prefix(key)).then(function(resp) {
     publish(event_channel, {event: key, value: resp.INCR});
     realtime_info[key] = resp.INCR;
   });
 }
 function decrement(key) {
-  return $.get("localhost:7379/DECR/" + prefix(key)).then(function(resp) {
+  return $.get("http://localhost:7379/DECR/" + prefix(key)).then(function(resp) {
     publish(event_channel, {event: key, value: resp.DECR});
     realtime_info[key] = resp.DECR;
   });
