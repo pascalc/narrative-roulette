@@ -65,6 +65,10 @@ function RealtimeCtrl($scope, $rootScope) {
   });
 }
 
+window.onload = function (e) {
+  location_dispatch(null, window.location.hash);
+}
+
 window.onbeforeunload = function (e) {
   location_dispatch(window.location.hash, null);
 }
