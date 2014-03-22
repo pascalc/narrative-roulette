@@ -59,7 +59,9 @@ function RealtimeCtrl($scope, $rootScope) {
   $scope.realtime_info = realtime_info;
   $rootScope.$on('$locationChangeSuccess', function(event, new_loc, old_loc) {
     console.log("location changed:", old_loc, "->", new_loc);
-    location_dispatch(old_loc, new_loc);
+    if (old_loc != new_loc) {
+      location_dispatch(old_loc, new_loc);  
+    }
   });
 }
 
