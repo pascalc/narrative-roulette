@@ -24,11 +24,8 @@ function subscribe(channel) {
   return socket;
 }
 
-function RealtimeCtrl($scope, $rootScope, $location) {
-  $rootScope.$on('$locationChangeStart', function(event) {
-    console.log("location changing from:", $location.path());
-  });
-  $rootScope.$on('$locationChangeSuccess', function(event) {
-    console.log("location changed to:", $location.path());
+function RealtimeCtrl($scope, $rootScope) {
+  $rootScope.$on('$locationChangeSuccess', function(event, new_loc, old_loc) {
+    console.log("location changed:", old_loc, "->", new_loc);
   });
 }
