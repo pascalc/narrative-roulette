@@ -25,6 +25,9 @@ function subscribe(channel) {
 }
 
 function RealtimeCtrl($scope, $rootScope, $location) {
+  $rootScope.$on('$locationChangeStart', function(event) {
+    console.log("location changing from:", $location.path());
+  });
   $rootScope.$on('$locationChangeSuccess', function(event) {
     console.log("location changed to:", $location.path());
   });
