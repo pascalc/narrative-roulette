@@ -1,11 +1,3 @@
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-// Getting rid of cache
-
 function contains(str, substr) {
   return str.indexOf(substr) != -1;  
 }
