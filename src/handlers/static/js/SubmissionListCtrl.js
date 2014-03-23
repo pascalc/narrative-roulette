@@ -1,3 +1,10 @@
+function query_param(name) {
+  name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+  var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+      results = regex.exec(location.hash);
+  return results == null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
 function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
   $scope.round;
   $scope.show_submission_index = 0;
@@ -47,10 +54,13 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
       //   $timeout(FB.XFBML.parse, 100);
       // });
       $scope.round = $("#latest-round-data").data("latest-round");
-      $timeout(parseXFBML, 100);
+      // $timeout(parseXFBML, 100);
       $scope.log_submission_view();
+      if (query_param("sub")) {
+        $scope.show_submission_index = parseInt(query_param("sub")) - 1;
+      }
     }
-    parseXFBML();
+    // parseXFBML();
   });
 }
 
