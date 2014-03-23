@@ -53,3 +53,12 @@ function SubmissionListCtrl($scope, $routeParams, $http, $facebook, $timeout) {
     parseXFBML();
   });
 }
+
+function apply_submission_list() {
+  angular.element($(".submissionList-view")).scope().$apply();
+}
+
+var latest_round;
+$(document).ready(function() {
+  latest_round = $("#latest-round-data").data("latest-round");
+});

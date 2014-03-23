@@ -2,15 +2,15 @@ function contains(str, substr) {
   return str.indexOf(substr) != -1;  
 }
 
-var redis_prefix = "kg-narrative-roulette";
-
-function prefix(str) {
-  return redis_prefix + ":" + str;
+var redis_key = "kg-narrative-roulette";
+function prefix(s) {
+  return redis_key + ":" + s;
 }
 
-var event_channel = "events";
+var submission_channel = "submissions";
 function publish(channel, obj) {
- return $.get("http://narrativeroulette.com:7379/PUBLISH/" + prefix(channel) + "/" + JSON.stringify(obj)); 
+  var body = "PUBLISH/" + prefix(channel) + "/" + encodeURIComponent(JSON.stringify(obj));
+  return $.post("http://narrativeroulette.com:7379/", body); 
 }
 function subscribe(channel) {
   var socket = new WebSocket("ws://narrativeroulette.com:7379/.json");
@@ -21,61 +21,30 @@ function subscribe(channel) {
   return socket;
 }
 
-var readers_key = "readers";
-var writers_key = "writers";
-var realtime_info = {
-  readers: undefined,
-  writers: undefined
-};
-function increment(key) {
-  return $.get("http://narrativeroulette.com:7379/INCR/" + prefix(key)).then(function(resp) {
-    publish(event_channel, {event: key, value: resp.INCR});
-    realtime_info[key] = resp.INCR;
-  });
-}
-function decrement(key) {
-  return $.get("http://narrativeroulette.com:7379/DECR/" + prefix(key)).then(function(resp) {
-    publish(event_channel, {event: key, value: resp.DECR});
-    realtime_info[key] = resp.DECR;
-  });
+function apply_realtime() {
+  angular.element($(".realtime-info")).scope().$apply();
 }
 
-function location_dispatch(old_loc, new_loc) {
-  if (contains(old_loc, "write")) {
-    decrement(writers_key);
-  }
-  if (contains(new_loc, "write")) {
-    increment(writers_key);
-  }
-  if (contains(old_loc, "read")) {
-    decrement(readers_key);
-  }
-  if (contains(new_loc, "read")) {
-    increment(readers_key);
-  }
-}
-
+var submissions = [];
 function RealtimeCtrl($scope, $rootScope) {
-  $scope.realtime_info = realtime_info;
-  $rootScope.$on('$locationChangeSuccess', function(event, new_loc, old_loc) {
-    console.log("location changed:", old_loc, "->", new_loc);
-    if (old_loc != new_loc) {
-      location_dispatch(old_loc, new_loc);  
-    }
-  });
-}
-
-window.onload = function (e) {
-  location_dispatch("", window.location.hash);
-}
-
-window.onbeforeunload = function (e) {
-  location_dispatch(window.location.hash, "");
+  $scope.num_submissions = function() {
+    return submissions.length;
+  }
 }
 
 $(document).ready(function() {
-  var socket = subscribe(event_channel);
+  var socket = subscribe(submission_channel);
   socket.onmessage = function(msg) {
-    console.log(event_channel, "received:", msg);
+    var data = JSON.parse(msg.data);
+    console.log(submission_channel, "received:", data);
+    if (data.SUBSCRIBE[0] == 'message') {
+      var sub = JSON.parse(data.SUBSCRIBE[2]);
+      console.log("new sub:", sub);
+      submissions.push(sub);
+      apply_realtime();
+      apply_submission_list();
+    }
   }
+  submissions = latest_round.submissions;
+  apply_realtime();
 });

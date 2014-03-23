@@ -55,14 +55,14 @@ header.cover h2 {
 
 div.image-darken {
  width: 100%;
- height: 15%;
+ height: 125px;
  position: absolute;
  top: 0;
  background-color: rgba(0,0,0,0.57); 
 }
 
 header.cover {
-  height: 15%;
+  height: 125px;
   background-image: url("/img/typewriter.jpg");
   background-position: 50% 48%;
   background-repeat: no-repeat;
@@ -321,6 +321,12 @@ div.submissionList-view .submitted-at {
   header.cover h2 {
     display: none;
   }
+}
+
+.realtime-info {
+  float: right;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
 #ie-banner {

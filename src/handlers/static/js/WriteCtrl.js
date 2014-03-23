@@ -31,8 +31,13 @@ function WriteCtrl($scope, $routeParams, $http, $interval, localStorageService, 
         mixpanel.track("Published");
         // $scope.show_fb_post_modal(response.data.fb_post_id); 
         // $scope.submission_response = response.data;
+        publish(submission_channel, response.data);
         if (response.data.round_id) {
-          $location.path("/round/" + response.data.round_id);
+          if (response.data.round_id == latest_round.id) {
+            $location.path("/read");  
+          } else {
+            $location.path("/round/" + response.data.round_id);  
+          }
         } else {
           $location.path("/submission/" + response.data.id);
         }

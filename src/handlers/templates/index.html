@@ -42,15 +42,15 @@ mixpanel.init("0fc8009f5556f248f7e5b09d5bbda074");</script><!-- end Mixpanel -->
         <a href="#/write">Write</a>
         <!-- <a href="#/display">Roulette</a> -->
         <a href="#/read">Read</a>
+        <div class="realtime-info" ng-controller="RealtimeCtrl">
+          <ng-include src="'partials/realtime.html'"></ng-include>
+        </div>
       </div>
     </nav>
     <div id="ie-banner" class="alert alert-danger"><div class="container">This website doesn't work in Internet Explorer. Use <a href="https://www.google.com/chrome">Google Chrome</a> instead.</div></div>
     <!-- Facebook SDK -->
     <div id="fb-root"></div>
     <div class="container">
-      <div class="realtime-info" ng-controller="RealtimeCtrl">
-        Realtime info goes here
-      </div>
       <div ng-view></div>
     </div>
     <!-- Google Analytics -->
